@@ -75,7 +75,24 @@
       }
 
       .nav-links a:hover {
-        color: #e67e22;
+        color: #d35400;
+      }
+
+      /* Focus indicators for accessibility */
+      .nav-links a:focus,
+      .skip-link:focus,
+      .accordion-header:focus,
+      .contact-grid a:focus {
+        outline: none;
+        background: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transform: translateY(-1px);
+        transition: all 0.2s ease;
+      }
+
+      .nav-links a:focus {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
       }
 
       .hero-image {
@@ -193,7 +210,7 @@
       }
 
       .show-date {
-        color: #e67e22;
+        color: #d35400;
         font-weight: bold;
         font-size: 1.1rem;
       }
@@ -231,7 +248,7 @@
         border-radius: 10px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         font-size: 1.1rem;
-        border-left: 4px solid #e67e22;
+        border-left: 4px solid #d35400;
         transition: transform 0.2s ease;
       }
 
@@ -254,7 +271,7 @@
 
       .accordion-header {
         background: white;
-        color: #e67e22;
+        color: #d35400;
         padding: 1.5rem 2rem;
         cursor: pointer;
         display: flex;
@@ -276,7 +293,7 @@
 
       .accordion-icon {
         font-size: 1.2rem;
-        color: #e67e22;
+        color: #d35400;
         transition: transform 0.3s ease, color 0.3s ease;
       }
 
@@ -347,6 +364,58 @@
         text-align: center;
       }
 
+      /* Skip navigation for accessibility */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: #000;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 0 0 4px 4px;
+        font-weight: bold;
+        z-index: 10000;
+        transition: top 0.3s;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+
+      /* Screen reader only content */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Mobile menu button */
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #333;
+        padding: 10px;
+        border-radius: 4px;
+      }
+
+      .menu-toggle:focus {
+        outline: none;
+        background: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transform: translateY(-1px);
+        transition: all 0.2s ease;
+      }
+
       @media (max-width: 768px) {
         .hero-image {
           margin: 0;
@@ -375,16 +444,62 @@
           display: none;
         }
 
+        .menu-toggle {
+          display: block;
+        }
+
         .nav-links {
-          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: rgba(255, 255, 255, 0.98);
+          flex-direction: column;
+          gap: 0;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          padding: 1rem 0;
+          transform: translateY(-100%);
+          opacity: 0;
+          visibility: hidden;
+          transition: transform 0.3s ease, opacity 0.3s ease,
+            visibility 0.3s ease;
+        }
+
+        .nav-links.active {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .nav-links li {
+          padding: 0;
+        }
+
+        .nav-links a {
+          display: block;
+          padding: 1rem 2rem;
+          border-bottom: 1px solid #eee;
+        }
+
+        .nav-links a:last-child {
+          border-bottom: none;
         }
       }
     </style>
   </head>
   <body>
+    <a href="#tietoa" class="skip-link">Siirry sisältöön</a>
     <header>
-      <nav class="container">
-        <ul class="nav-links">
+      <nav class="container" aria-label="Päänavigaatio">
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Avaa navigaatiovalikko"
+        >
+          ☰
+        </button>
+        <ul class="nav-links" role="menubar" id="nav-menu">
           <li><a href="#hero">Kureliivit ja jaloimmat reidet</a></li>
           <li><a href="#tietoa">Tietoa meistä</a></li>
           <li><a href="#esitykset">Tulevat esitykset</a></li>
@@ -394,265 +509,313 @@
       </nav>
     </header>
 
-    <div class="hero-image" id="hero">
-      <img
-        src="kureliivit_group_ai.png"
-        alt="Improvisaatioteatteriryhmä Kureliivit ja jaloimmat reidet"
-      />
-    </div>
+    <main>
+      <section class="hero-image" id="hero">
+        <div class="hero-content sr-only">
+          <h1 class="hero-title">Kureliivit ja jaloimmat reidet</h1>
+          <p class="hero-subtitle">
+            Pirkanmaalainen improvisaatioteatteriryhmä
+          </p>
+        </div>
+        <img
+          src="kureliivit_group_ai.png"
+          alt="Improvisaatioteatteriryhmä Kureliivit ja jaloimmat reidet esiintyy lavalla energisesti yleisön edessä"
+          role="img"
+        />
+      </section>
 
-    <section class="section" id="tietoa">
-      <div class="container">
-        <h2 class="section-title">Tietoa meistä</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <p>
-              Tervetuloa Kureliivit ja jaloimmat reidet -kotisivuille!
-              Kureliivit ja jaloimmat reidet on pirkanmaalainen kokeneista
-              improharrastajista koostuva improvisaatioteatteriryhmä, joka on
-              perustettu vuonna 2023.
-            </p>
+      <section class="section" id="tietoa">
+        <div class="container">
+          <h2 class="section-title">Tietoa meistä</h2>
+          <div class="about-content">
+            <div class="about-text">
+              <p>
+                Tervetuloa Kureliivit ja jaloimmat reidet -kotisivuille!
+                Kureliivit ja jaloimmat reidet on pirkanmaalainen kokeneista
+                improharrastajista koostuva improvisaatioteatteriryhmä, joka on
+                perustettu vuonna 2023.
+              </p>
 
-            <p>
-              Kureliivien improlle on ominaista energisyys ja esitysten
-              rakentaminen tietyn teeman ympärille. Pyrimme löytämään jatkuvasti
-              uusia ja yllättäviä tapoja toteuttaa improa lavalla. Jokainen
-              esityksemme on ainutlaatuinen kokemus, joka syntyy yleisön ja
-              esiintyjien välisessä vuorovaikutuksessa.
-            </p>
+              <p>
+                Kureliivien improlle on ominaista energisyys ja esitysten
+                rakentaminen tietyn teeman ympärille. Pyrimme löytämään
+                jatkuvasti uusia ja yllättäviä tapoja toteuttaa improa lavalla.
+                Jokainen esityksemme on ainutlaatuinen kokemus, joka syntyy
+                yleisön ja esiintyjien välisessä vuorovaikutuksessa.
+              </p>
 
-            <p>
-              Esiinnymme säännöllisesti muun muassa Nokian Tehdassaaren
-              kahvilassa ja tilauskeikoilla.
-            </p>
-          </div>
-          <div class="about-image">
-            <img
-              src="kureliivit-logo.png"
-              alt="Kureliivit ja jaloimmat reidet logo"
-            />
+              <p>
+                Esiinnymme säännöllisesti muun muassa Nokian Tehdassaaren
+                kahvilassa ja tilauskeikoilla.
+              </p>
+            </div>
+            <aside class="about-image">
+              <img
+                src="kureliivit-logo.png"
+                alt="Kureliivit ja jaloimmat reidet logo"
+                role="presentation"
+              />
+            </aside>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="esitykset">
-      <div class="container">
-        <h2 class="section-title">Tulevat esitykset</h2>
-        <div class="shows-grid"> 
-          <div class="show-card">
-            <div class="show-date">5.9.2025 klo 18:30</div>
-            <h3 class="show-title">Improtehdas-klubi:
-              <br>Suora lähetys</h3>
-            <p class="show-venue">
-              Tehdassaaren kahvila, Souranderintie 2, Nokia
-            </p>
-            <p class="show-intro">
-              Syksyn Improtehdas-klubien sarjan avaa Suora lähetys, eli
-              kurkistus suomalaisen televisioillan ohjelmistoon.
-            </p>
-            <p>
-              Näemme nohevia uutis- ja ajankohtaisohjelmien ankkureita,
-              saippuaoopperoiden huimia käänteitä ja urheilukisojen jännitystä.
-              Illan aikana kanava vaihtuu tiuhaan, mutta kenellä on kaukosäädin?
-              Onko virityskuva kohdillaan? Kuka joutuu mainoksen uhriksi? Entä
-              näkyykö teksti-TV? Tehdassaaren kahvila on avoinna koko esityksen
-              ajan.
-            </p>
-            <p class="entry-info">
-              Esitykseen on vapaa pääsy. Sen aikana kerätään vapaaehtoinen
-              ohjelmamaksu (MobilePay tai käteinen).
-            </p>
-          </div>
-
-          <div class="show-card">
-            <div class="show-date">3.10.2025 klo 18:30</div>
-            <h3 class="show-title">Improtehdas-klubi:
-              <br>Oi maamme!</h3>
-            <p class="show-venue">
-              Tehdassaaren kahvila, Souranderintie 2, Nokia
-            </p>
-            <p class="show-intro">
-              Oi, maamme! jatkaa Improtehdas-klubien sarjaa. Tällä kertaa
-              pureudumme suomalaisuuden ytimeen ja kliseisiin.
-            </p>
-            <p>
-              Millainen on jokapaikan Timo Virtanen? Mitä tapahtuu, kun maailman
-              onnellisin kansa jonottaa ämpäreitä räntäsateessa? Entä kumpi
-              voittaa eukonkantokisan tai suopotkupalloturnauksen: savolainen
-              vai pohjalainen? Tehdassaaren kahvila on avoinna koko esityksen
-              ajan.
-            </p>
-            <p class="entry-info">
-              Esitykseen on vapaa pääsy. Sen aikana kerätään vapaaehtoinen
-              ohjelmamaksu (MobilePay tai käteinen).
-            </p>
-          </div>
-
-          <div class="show-card">
-            <div class="show-date">7.11.2025 klo 18:30</div>
-            <h3 class="show-title">Improtehdas-klubi:
-              <br>Valtaa ja auktoriteetteja</h3>
-            <p class="show-venue">
-              Tehdassaaren kahvila, Souranderintie 2, Nokia
-            </p>
-            <p class="show-intro">
-              Improtehdas-klubi kampittaa marraskuussa valtaapitäviä ja
-              auktoriteetteja.
-            </p>
-            <p>
-              Paljastamme ne, jotka käyttävät piilovaltaa ja nostavat itsensä
-              jalustalle. Isonkin pomon sisällä piileskelee pieni ihminen. Kenen
-              sana painaa ja ääni kuuluu? Tehdassaaren kahvila on avoinna koko
-              esityksen ajan.
-            </p>
-            <p class="entry-info">
-              Esitykseen on vapaa pääsy. Sen aikana kerätään vapaaehtoinen
-              ohjelmamaksu (MobilePay tai käteinen).
-            </p>
-          </div>
-
-          <div class="show-card">
-            <div class="show-date">12.12.2025 klo 18:30</div>
-            <h3 class="show-title">Improtehdas-klubi: Jouluprässi</h3>
-            <p class="show-venue">
-              Tehdassaaren kahvila, Souranderintie 2, Nokia
-            </p>
-            <p class="show-intro">
-              Vuoden viimeinen Improtehdas-klubi on Jouluprässi.
-            </p>
-            <p>
-              Nyt on vielä 12 päivää aikaa tehdä täydellinen joulu: ihanat
-              leivonnaiset, tuoksuva ja siisti koti, täydellisen kaunis
-              joulukuusi, upeat joulukukat, kauniit jouluvaatteet, kaikille
-              henkilökohtaisesti mietityt kalliit lahjat, käsin tehdyt
-              joulukortit, tuttujen muistaminen henkilökohtaisesti ja tietenkin
-              iloinen vierailu kaikkien sukulaisten luona. Tule hakemaan
-              vertaistukea! Sinä pystyt tähän! Tehdassaaren kahvila on avoinna
-              koko esityksen ajan.
-            </p>
-            <p class="entry-info">
-              Esitykseen on vapaa pääsy. Sen aikana kerätään vapaaehtoinen
-              ohjelmamaksu (MobilePay tai käteinen).
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="menneet-keikat">
-      <div class="container">
-        <h2 class="section-title">Tehdyt keikat</h2>
-        <div class="accordion">
-          <div class="accordion-item active">
-            <button class="accordion-header">
-              2025
-              <span class="accordion-icon">▼</span>
-            </button>
-            <div class="accordion-content">
-              <ul>
-                <li>Tapahtumien yö - Artteli on art, Tampere, 7.8.2025</li>
-                <li>Improriihi, Teerenpeli, Tampere, 28.5.2025</li>
-                <li>
-                  Improtehdas 2.0: Kevätjuhla, Tehdassaaren kahvila, Nokia,
-                  16.5.2025
-                </li>
-                <li>Yksityistilaisuus - syntymäpäivät, Orivesi, 3.5.2025</li>
-                <li>
-                  Improtehdas 2.0: Koukuttavat käänteet, Tehdassaaren kahvila,
-                  Nokia, 25.4.2025
-                </li>
-                <li>
-                  Improtehdas 2.0: Runon ja rytmin ilta, Tehdassaaren kahvila,
-                  Nokia, 21.3.2025
-                </li>
-                <li>Yksityistilaisuus - syntymäpäivät, Tampere, 22.2.2025</li>
-                <li>
-                  Improtehdas 2.0: Kerrostaloelämää, Tehdassaaren kahvila,
-                  Nokia, 21.2.2025
-                </li>
-                <li>
-                  Improtehdas 2.0: Reploja ja repeilyjä, Tehdassaaren kahvila,
-                  Nokia, 17.1.2025
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-header">
-              2024
-              <span class="accordion-icon">▼</span>
-            </button>
-            <div class="accordion-content">
-              <ul>
-                <li>Pikkujoulushow, Tehdassaaren kahvila, Nokia, 18.12.2024</li>
-                <li>Yksityistilaisuus - pikkujoulut, Lempäälä, 13.12.2024</li>
-                <li>Yksityistilaisuus - pikkujoulut, Nokia, 30.11.2024</li>
-                <li>Yksityistilaisuus - pikkujoulut, Tampere, 15.11.2024</li>
-                <li>Yksityistilaisuus - pikkujoulut, Tampere, 14.11.2024</li>
-                <li>Yksityistilaisuus - pikkujoulut, Tampere, 2.11.2024</li>
-                <li>Improtehdas, Tehdassaaren kahvila, Nokia, 2.10.2024</li>
-                <li>Improfestarit, Ravintola Opus K, Lohja, 21.9.2024</li>
-                <li>Runoilta, Ravintola Myrskyluoto, Kangasala, 27.8.2024</li>
-                <li>
-                  Yksityistilaisuus - koulutus- ja virkistyspäivä, Kangasala,
-                  13.6.2024
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-header">
-              2023
-              <span class="accordion-icon">▼</span>
-            </button>
-            <div class="accordion-content">
-              <ul>
-                <li>Yksityistilaisuus - pikkujoulut, Kangasala, 8.12.2023</li>
-                <li>Yksityistilaisuus - pikkujoulut, Tampere, 1.12.2023</li>
-                <li>Yksityistilaisuus - häät, Pirkkala, 23.9.2023</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="yhteystiedot">
-      <div class="container">
-        <h2 class="section-title">Ota yhteyttä</h2>
-        <div class="contact-grid">
-          <div class="contact-item">
-            <div class="contact-icon">📧</div>
-            <h3>Sähköposti</h3>
-            <p>Kureliivit@gmail.com</p>
-            <p>
-              Kysy lisätietoja esityksistä tai varaa ryhmämme tilaisuuteesi!
-            </p>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon">📱</div>
-            <h3>Sosiaalinen media</h3>
-            <p>@kureliivitjajaloimmatreidet</p>
-
-            <p>
-              Seuraa meitä
-              <a href="https://www.instagram.com/kureliivitjajaloimmatreidet/"
-                >Instagramissa</a
+      <section class="section" id="esitykset">
+        <div class="container">
+          <h2 class="section-title">Tulevat esitykset</h2>
+          <div class="shows-grid">
+            <article class="show-card">
+              <time class="show-date" datetime="2025-09-05T18:30"
+                >5.9.2025 klo 18:30</time
               >
-              ja
-              <a href="https://www.facebook.com/profile.php?id=61566045216951"
-                >Facebookissa</a
+              <h3 class="show-title">Improtehdas-klubi</h3>
+              <p class="show-venue">
+                Tehdassaaren kahvila, Souranderintie 2, Nokia
+              </p>
+              <p class="show-intro">
+                Syksyn Improtehdas-klubien sarjan avaa Suora lähetys, eli
+                kurkistus suomalaisen televisioillan ohjelmistoon.
+              </p>
+              <p>
+                Näemme nohevia uutis- ja ajankohtaisohjelmien ankkureita,
+                saippuaoopperoiden huimia käänteitä ja urheilukisojen
+                jännitystä. Illan aikana kanava vaihtuu tiuhaan, mutta kenellä
+                on kaukosäädin? Onko virityskuva kohdillaan? Kuka joutuu
+                mainoksen uhriksi? Entä näkyykö teksti-TV? Tehdassaaren kahvila
+                on avoinna koko esityksen ajan.
+              </p>
+              <p class="entry-info">
+                Esitykseen on vapaa pääsy. Sen aikana kerätään vapaaehtoinen
+                ohjelmamaksu (MobilePay tai käteinen).
+              </p>
+            </article>
+
+            <article class="show-card">
+              <time class="show-date" datetime="2025-10-03T18:30"
+                >3.10.2025 klo 18:30</time
               >
-              päivittäisten kuulumisten ja kulissitarinoiden perässä.
-            </p>
+              <h3 class="show-title">Improtehdas-klubi</h3>
+              <p class="show-venue">
+                Tehdassaaren kahvila, Souranderintie 2, Nokia
+              </p>
+              <p class="show-intro">
+                Oi, maamme! jatkaa Improtehdas-klubien sarjaa. Tällä kertaa
+                pureudumme suomalaisuuden ytimeen ja kliseisiin.
+              </p>
+              <p>
+                Millainen on jokapaikan Timo Virtanen? Mitä tapahtuu, kun
+                maailman onnellisin kansa jonottaa ämpäreitä räntäsateessa? Entä
+                kumpi voittaa eukonkantokisan tai suopotkupalloturnauksen:
+                savolainen vai pohjalainen? Tehdassaaren kahvila on avoinna koko
+                esityksen ajan.
+              </p>
+              <p class="entry-info">
+                Esitykseen on vapaa pääsy. Sen aikana kerätään vapaaehtoinen
+                ohjelmamaksu (MobilePay tai käteinen).
+              </p>
+            </article>
+
+            <article class="show-card">
+              <time class="show-date" datetime="2025-11-07T18:30"
+                >7.11.2025 klo 18:30</time
+              >
+              <h3 class="show-title">Improtehdas-klubi</h3>
+              <p class="show-venue">
+                Tehdassaaren kahvila, Souranderintie 2, Nokia
+              </p>
+              <p class="show-intro">
+                Improtehdas-klubi kampittaa marraskuussa valtaapitäviä ja
+                auktoriteetteja.
+              </p>
+              <p>
+                Paljastamme ne, jotka käyttävät piilovaltaa ja nostavat itsensä
+                jalustalle. Isonkin pomon sisällä piileskelee pieni ihminen.
+                Kenen sana painaa ja ääni kuuluu? Tehdassaaren kahvila on
+                avoinna koko esityksen ajan.
+              </p>
+              <p class="entry-info">
+                Esitykseen on vapaa pääsy. Sen aikana kerätään vapaaehtoinen
+                ohjelmamaksu (MobilePay tai käteinen).
+              </p>
+            </article>
+
+            <article class="show-card">
+              <time class="show-date" datetime="2025-12-12T18:30"
+                >12.12.2025 klo 18:30</time
+              >
+              <h3 class="show-title">Improtehdas-klubi</h3>
+              <p class="show-venue">
+                Tehdassaaren kahvila, Souranderintie 2, Nokia
+              </p>
+              <p class="show-intro">
+                Vuoden viimeinen Improtehdas-klubi on Jouluprässi.
+              </p>
+              <p>
+                Nyt on vielä 12 päivää aikaa tehdä täydellinen joulu: ihanat
+                leivonnaiset, tuoksuva ja siisti koti, täydellisen kaunis
+                joulukuusi, upeat joulukukat, kauniit jouluvaatteet, kaikille
+                henkilökohtaisesti mietityt kalliit lahjat, käsin tehdyt
+                joulukortit, tuttujen muistaminen henkilökohtaisesti ja
+                tietenkin iloinen vierailu kaikkien sukulaisten luona. Tule
+                hakemaan vertaistukea! Sinä pystyt tähän! Tehdassaaren kahvila
+                on avoinna koko esityksen ajan.
+              </p>
+              <p class="entry-info">
+                Esitykseen on vapaa pääsy. Sen aikana kerätään vapaaehtoinen
+                ohjelmamaksu (MobilePay tai käteinen).
+              </p>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section class="section" id="menneet-keikat">
+        <div class="container">
+          <h2 class="section-title">Tehdyt keikat</h2>
+          <div class="accordion">
+            <div class="accordion-item active">
+              <button
+                class="accordion-header"
+                aria-expanded="true"
+                aria-controls="accordion-2025"
+                id="accordion-header-2025"
+              >
+                2025
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div
+                class="accordion-content"
+                id="accordion-2025"
+                aria-labelledby="accordion-header-2025"
+              >
+                <ul>
+                  <li>
+                    Yksityistilaisuus - työpaikan virkistyspäivä, Ravintola
+                    Tillikka, Tampere, 22.8.2025
+                  </li>
+                  <li>Tapahtumien yö - Artteli on art, Tampere, 7.8.2025</li>
+                  <li>Improriihi, Ravintola Teerenpeli, Tampere, 28.5.2025</li>
+                  <li>
+                    Improtehdas 2.0: Kevätjuhla, Tehdassaaren kahvila, Nokia,
+                    16.5.2025
+                  </li>
+                  <li>Yksityistilaisuus - syntymäpäivät, Orivesi, 3.5.2025</li>
+                  <li>
+                    Improtehdas 2.0: Koukuttavat käänteet, Tehdassaaren kahvila,
+                    Nokia, 25.4.2025
+                  </li>
+                  <li>
+                    Improtehdas 2.0: Runon ja rytmin ilta, Tehdassaaren kahvila,
+                    Nokia, 21.3.2025
+                  </li>
+                  <li>Yksityistilaisuus - syntymäpäivät, Tampere, 22.2.2025</li>
+                  <li>
+                    Improtehdas 2.0: Kerrostaloelämää, Tehdassaaren kahvila,
+                    Nokia, 21.2.2025
+                  </li>
+                  <li>
+                    Improtehdas 2.0: Reploja ja repeilyjä, Tehdassaaren kahvila,
+                    Nokia, 17.1.2025
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button
+                class="accordion-header"
+                aria-expanded="false"
+                aria-controls="accordion-2024"
+                id="accordion-header-2024"
+              >
+                2024
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div
+                class="accordion-content"
+                id="accordion-2024"
+                aria-labelledby="accordion-header-2024"
+              >
+                <ul>
+                  <li>
+                    Pikkujoulushow, Tehdassaaren kahvila, Nokia, 18.12.2024
+                  </li>
+                  <li>Yksityistilaisuus - pikkujoulut, Lempäälä, 13.12.2024</li>
+                  <li>Yksityistilaisuus - pikkujoulut, Nokia, 30.11.2024</li>
+                  <li>Yksityistilaisuus - pikkujoulut, Tampere, 15.11.2024</li>
+                  <li>Yksityistilaisuus - pikkujoulut, Tampere, 14.11.2024</li>
+                  <li>Yksityistilaisuus - pikkujoulut, Tampere, 2.11.2024</li>
+                  <li>Improtehdas, Tehdassaaren kahvila, Nokia, 2.10.2024</li>
+                  <li>Improfestarit, Ravintola Opus K, Lohja, 21.9.2024</li>
+                  <li>Runoilta, Ravintola Myrskyluoto, Kangasala, 27.8.2024</li>
+                  <li>
+                    Yksityistilaisuus - koulutus- ja virkistyspäivä, Kangasala,
+                    13.6.2024
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button
+                class="accordion-header"
+                aria-expanded="false"
+                aria-controls="accordion-2023"
+                id="accordion-header-2023"
+              >
+                2023
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div
+                class="accordion-content"
+                id="accordion-2023"
+                aria-labelledby="accordion-header-2023"
+              >
+                <ul>
+                  <li>Yksityistilaisuus - pikkujoulut, Kangasala, 8.12.2023</li>
+                  <li>Yksityistilaisuus - pikkujoulut, Tampere, 1.12.2023</li>
+                  <li>Yksityistilaisuus - häät, Pirkkala, 23.9.2023</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="yhteystiedot">
+        <div class="container">
+          <h2 class="section-title">Ota yhteyttä</h2>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <h3>Sähköposti</h3>
+              <p>Kureliivit@gmail.com</p>
+              <p>
+                Kysy lisätietoja esityksistä tai varaa ryhmämme tilaisuuteesi!
+              </p>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">📱</div>
+              <h3>Sosiaalinen media</h3>
+              <p>@kureliivitjajaloimmatreidet</p>
+
+              <p>
+                Seuraa meitä
+                <a href="https://www.instagram.com/kureliivitjajaloimmatreidet/"
+                  >Instagramissa</a
+                >
+                ja
+                <a href="https://www.facebook.com/profile.php?id=61566045216951"
+                  >Facebookissa</a
+                >
+                päivittäisten kuulumisten ja kulissitarinoiden perässä.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer>
       <div class="container">
@@ -686,13 +849,44 @@
         }
       });
 
+      // Mobile menu functionality
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          const isActive = navLinks.classList.contains("active");
+          navLinks.classList.toggle("active");
+
+          // Update ARIA attributes
+          menuToggle.setAttribute("aria-expanded", !isActive);
+          menuToggle.setAttribute(
+            "aria-label",
+            !isActive ? "Sulje navigaatiovalikko" : "Avaa navigaatiovalikko"
+          );
+        });
+
+        // Close menu when clicking on links
+        navLinks.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Avaa navigaatiovalikko");
+          });
+        });
+      }
+
       // Accordion functionality
       document.querySelectorAll(".accordion-header").forEach((header) => {
         header.addEventListener("click", () => {
           const accordionItem = header.parentElement;
+          const isActive = accordionItem.classList.contains("active");
 
           // Toggle the clicked accordion item
           accordionItem.classList.toggle("active");
+
+          // Update ARIA attributes
+          header.setAttribute("aria-expanded", !isActive);
         });
       });
     </script>
