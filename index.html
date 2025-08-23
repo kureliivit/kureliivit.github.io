@@ -154,10 +154,8 @@
         text-align: center;
         font-size: 2.5rem;
         margin-bottom: 3rem;
-        background: linear-gradient(45deg, #e74c3c, #f39c12, #9b59b6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        background: none;
+        color: #6d1a00; /* Tummempi punaruskea, AA-kontrasti valkoisella taustalla */
         font-weight: 600;
       }
 
@@ -210,7 +208,7 @@
       }
 
       .show-date {
-        color: #d35400;
+        color: #8b2c00;
         font-weight: bold;
         font-size: 1.1rem;
       }
@@ -271,7 +269,11 @@
 
       .accordion-header {
         background: white;
-        color: #d35400;
+        color: #a8431a; /* Vaaleampi mutta silti kontrastinen */
+        :focus-visible {
+          outline: 3px solid #d35400;
+          outline-offset: 2px;
+        }
         padding: 1.5rem 2rem;
         cursor: pointer;
         display: flex;
@@ -500,11 +502,13 @@
           ☰
         </button>
         <ul class="nav-links" role="menubar" id="nav-menu">
-          <li><a href="#hero">Kureliivit ja jaloimmat reidet</a></li>
-          <li><a href="#tietoa">Tietoa meistä</a></li>
-          <li><a href="#esitykset">Tulevat esitykset</a></li>
-          <li><a href="#menneet-keikat">Tehdyt keikat</a></li>
-          <li><a href="#yhteystiedot">Yhteystiedot</a></li>
+          <li>
+            <a href="#hero" role="menuitem">Kureliivit ja jaloimmat reidet</a>
+          </li>
+          <li><a href="#tietoa" role="menuitem">Tietoa meistä</a></li>
+          <li><a href="#esitykset" role="menuitem">Tulevat esitykset</a></li>
+          <li><a href="#menneet-keikat" role="menuitem">Tehdyt keikat</a></li>
+          <li><a href="#yhteystiedot" role="menuitem">Yhteystiedot</a></li>
         </ul>
       </nav>
     </header>
@@ -519,12 +523,12 @@
         </div>
         <img
           src="kureliivit_group_ai.png"
-          alt="Improvisaatioteatteriryhmä Kureliivit ja jaloimmat reidet esiintyy lavalla energisesti yleisön edessä"
+          alt="Improvisaatioteatteriryhmä Kureliivit ja jaloimmat reidet ryhmäkuva"
           role="img"
         />
       </section>
 
-      <section class="section" id="tietoa">
+      <section class="section" id="tietoa" tabindex="-1">
         <div class="container">
           <h2 class="section-title">Tietoa meistä</h2>
           <div class="about-content">
@@ -687,6 +691,7 @@
                 class="accordion-content"
                 id="accordion-2025"
                 aria-labelledby="accordion-header-2025"
+                aria-hidden="false"
               >
                 <ul>
                   <li>
@@ -735,6 +740,7 @@
                 class="accordion-content"
                 id="accordion-2024"
                 aria-labelledby="accordion-header-2024"
+                aria-hidden="true"
               >
                 <ul>
                   <li>
@@ -770,6 +776,7 @@
                 class="accordion-content"
                 id="accordion-2023"
                 aria-labelledby="accordion-header-2023"
+                aria-hidden="true"
               >
                 <ul>
                   <li>Yksityistilaisuus - pikkujoulut, Kangasala, 8.12.2023</li>
@@ -880,13 +887,35 @@
       document.querySelectorAll(".accordion-header").forEach((header) => {
         header.addEventListener("click", () => {
           const accordionItem = header.parentElement;
+          const content = accordionItem.querySelector(".accordion-content");
           const isActive = accordionItem.classList.contains("active");
-
-          // Toggle the clicked accordion item
           accordionItem.classList.toggle("active");
-
-          // Update ARIA attributes
           header.setAttribute("aria-expanded", !isActive);
+          if (content) {
+            content.setAttribute("aria-hidden", isActive ? "true" : "false");
+          }
+        });
+      });
+
+      // Keyboard navigation for menubar
+      const menuItems = navLinks
+        ? navLinks.querySelectorAll('[role="menuitem"]')
+        : [];
+      menuItems.forEach((item, idx) => {
+        item.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            menuItems[(idx + 1) % menuItems.length].focus();
+          } else if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            menuItems[(idx - 1 + menuItems.length) % menuItems.length].focus();
+          } else if (e.key === "Home") {
+            e.preventDefault();
+            menuItems[0].focus();
+          } else if (e.key === "End") {
+            e.preventDefault();
+            menuItems[menuItems.length - 1].focus();
+          }
         });
       });
     </script>
