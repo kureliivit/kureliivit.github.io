@@ -418,6 +418,30 @@
         transition: all 0.2s ease;
       }
 
+      .image-section {
+        padding: 60px 0;
+        background: white;
+      }
+
+      .image-section:nth-child(even) {
+        background: #f8f9fa;
+      }
+
+      .image-section .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image-section img {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+        border-radius: 8px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        object-fit: cover;
+      }
+
       @media (max-width: 768px) {
         .hero-image {
           margin: 0;
@@ -444,6 +468,14 @@
 
         .about-image {
           display: none;
+        }
+
+        .image-section {
+          padding: 40px 20px;
+        }
+
+        .image-section img {
+          max-height: 350px;
         }
 
         .menu-toggle {
@@ -564,6 +596,16 @@
         </div>
       </section>
 
+      <section class="image-section">
+        <div class="container">
+            <!-- Lapa: Vaihda kuva src-kohtaan -->  
+          <img 
+            src="kuvat/IMG_flyygeli004.JPG" 
+            alt="Kuva Kureliivit ja jaloimmat reidet improvisaatioteatteriryhmästä" 
+            />
+        </div>
+      </section>
+
       <section class="section" id="esitykset">
         <div class="container">
           <h2 class="section-title">Tulevat esitykset</h2>
@@ -596,6 +638,17 @@
               </p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="image-section">
+        
+        <div class="container">
+          <!-- Lapa: Vaihda kuva src-kohtaan -->           
+          <img 
+          src="kuvat/IMG_ryhmarivi01.JPG" 
+          alt="Kuva Kureliivit ja jaloimmat reidet improvisaatioteatteriryhmästä" 
+          />
         </div>
       </section>
 
@@ -744,6 +797,16 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="image-section">
+        <div class="container">
+          <!-- Lapa: Vaihda kuva src-kohtaan --> 
+          <img 
+            src="kuvat/ryhma_kehys.png" 
+            alt="Kuva Kureliivit ja jaloimmat reidet improvisaatioteatteriryhmästä" 
+          />
         </div>
       </section>
 
