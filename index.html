@@ -314,7 +314,7 @@
       }
 
       .accordion-item.active .accordion-content {
-        max-height: 1000px;
+        max-height: none;
       }
 
       .accordion-content ul {
@@ -909,6 +909,33 @@
       }
 
       // Accordion functionality
+      // Close 2025 accordion on mobile view on page load
+      function handleAccordionOnResize() {
+        const firstAccordion = document.querySelector(".accordion-item");
+        if (firstAccordion) {
+          const header = firstAccordion.querySelector(".accordion-header");
+          const content = firstAccordion.querySelector(".accordion-content");
+          
+          if (window.innerWidth <= 768) {
+            // Mobile: close accordion
+            firstAccordion.classList.remove("active");
+            if (header) header.setAttribute("aria-expanded", "false");
+            if (content) content.setAttribute("aria-hidden", "true");
+          } else {
+            // Desktop: open accordion
+            firstAccordion.classList.add("active");
+            if (header) header.setAttribute("aria-expanded", "true");
+            if (content) content.setAttribute("aria-hidden", "false");
+          }
+        }
+      }
+      
+      // Run on page load
+      handleAccordionOnResize();
+      
+      // Run on window resize
+      window.addEventListener("resize", handleAccordionOnResize);
+      
       document.querySelectorAll(".accordion-header").forEach((header) => {
         header.addEventListener("click", () => {
           const accordionItem = header.parentElement;
