@@ -5,3 +5,4 @@
 
 15.11.2025 - lisätty kuvat osioiden väliin etusivulle.
 
+24.11.2025 - korjattu menneiden keikkojen näkymistä mobiilissa.
