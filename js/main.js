@@ -1,8 +1,3 @@
-// Calculate show statistics when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  calculateShowStatistics();
-});
-
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
@@ -52,81 +47,6 @@ if (menuToggle && navLinks) {
       navLinks.classList.remove("active");
       menuToggle.setAttribute("aria-expanded", "false");
       menuToggle.setAttribute("aria-label", "Avaa navigaatiovalikko");
-    });
-  });
-}
-
-// Calculate and display show statistics
-function calculateShowStatistics() {
-  const statsElement = document.getElementById("shows-stats");
-  if (!statsElement) return;
-
-  const tables = document.querySelectorAll(".past-shows-table");
-  let yksityistilaisuusCount = 0;
-  let avoinCount = 0;
-
-  tables.forEach((table) => {
-    const rows = table.querySelectorAll("tbody tr");
-    rows.forEach((row) => {
-      const td = row.querySelector("td");
-      if (td) {
-        const text = td.textContent || td.innerText;
-        if (text.includes("Yksityistilaisuus")) {
-          yksityistilaisuusCount++;
-        } else {
-          avoinCount++;
-        }
-      }
-    });
-  });
-
-  statsElement.textContent = `Kureliivit ja jaloimmat reidet on esiintynyt ${avoinCount} kertaa avoimissa esityksissä ja ${yksityistilaisuusCount} kertaa yksityistilaisuuksissa.`;
-}
-
-// Calculate show statistics when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  calculateShowStatistics();
-});
-
-// Accordion functionality
-// Close 2025 accordion on mobile view on page load
-function handleAccordionOnResize() {
-  const firstAccordion = document.querySelector(".accordion-item");
-  if (firstAccordion) {
-    const header = firstAccordion.querySelector(".accordion-header");
-    const content = firstAccordion.querySelector(".accordion-content");
-
-    if (window.innerWidth <= 768) {
-      // Mobile: close accordion
-      firstAccordion.classList.remove("active");
-      if (header) header.setAttribute("aria-expanded", "false");
-      if (content) content.setAttribute("aria-hidden", "true");
-    } else {
-      // Desktop: open accordion
-      firstAccordion.classList.add("active");
-      if (header) header.setAttribute("aria-expanded", "true");
-      if (content) content.setAttribute("aria-hidden", "false");
-    }
-  }
-}
-
-// Run accordion functionality only if accordion exists
-if (document.querySelector(".accordion")) {
-  handleAccordionOnResize();
-
-  // Run on window resize
-  window.addEventListener("resize", handleAccordionOnResize);
-
-  document.querySelectorAll(".accordion-header").forEach((header) => {
-    header.addEventListener("click", () => {
-      const accordionItem = header.parentElement;
-      const content = accordionItem.querySelector(".accordion-content");
-      const isActive = accordionItem.classList.contains("active");
-      accordionItem.classList.toggle("active");
-      header.setAttribute("aria-expanded", !isActive);
-      if (content) {
-        content.setAttribute("aria-hidden", isActive ? "true" : "false");
-      }
     });
   });
 }
