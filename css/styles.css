@@ -39,12 +39,6 @@ nav {
   align-items: center;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #6d1a00;
-}
-
 .nav-links {
   display: flex;
   list-style: none;
@@ -71,7 +65,6 @@ nav {
 /* Focus indicators for accessibility */
 .nav-links a:focus-visible,
 .skip-link:focus-visible,
-.accordion-header:focus-visible,
 .contact-grid a:focus-visible,
 .menu-toggle:focus-visible {
   outline: 3px solid #d35400;
@@ -215,134 +208,17 @@ nav {
   font-size: 1.1rem;
 }
 
-.show-title {
-  font-size: 1.3rem;
-  margin: 0.5rem 0;
-  color: #333;
-}
-
 .show-venue {
   color: #666;
   font-style: italic;
   margin-bottom: 1rem;
 }
 
-.entry-info {
-  margin-top: 1.5rem;
-}
-
 .show-intro {
   margin-bottom: 1.5rem;
 }
 
-.past-gigs-list {
-  margin: 0 auto;
-  list-style: none;
-  padding: 0;
-}
-
-.past-gigs-list li {
-  background: white;
-  margin-bottom: 1rem;
-  padding: 1.5rem 2rem;
-  border-radius: 5px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  font-size: 1.1rem;
-  border-left: 4px solid #d35400;
-  transition: box-shadow 0.2s ease;
-}
-
-.past-gigs-list li:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-}
-
-.accordion {
-  margin: 0 auto;
-  max-width: 100%;
-}
-
-.accordion-item {
-  background: white;
-  margin-bottom: 1rem;
-  border-radius: 5px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-}
-
-.accordion-header {
-  background: white;
-  color: #a8431a;
-  padding: 1.5rem 2rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.3rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
-  width: 100%;
-  text-align: left;
-  border-bottom: 2px solid #f0f0f0;
-}
-
-.accordion-header:focus-visible {
-  outline: 3px solid #d35400;
-  outline-offset: 2px;
-}
-
-.accordion-header:hover {
-  background: #f8f9fa;
-  color: #d35400;
-}
-
-.accordion-icon {
-  font-size: 1.2rem;
-  color: #a8431a;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.accordion-header:hover .accordion-icon {
-  color: #d35400;
-}
-
-.accordion-item.active .accordion-icon {
-  transform: rotate(180deg);
-}
-
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.accordion-item.active .accordion-content {
-  max-height: none;
-}
-
-.accordion-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.accordion-content li {
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #f0f0f0;
-  font-size: 1rem;
-  color: #333;
-  transition: background 0.2s ease;
-}
-
-.accordion-content li:last-child {
-  border-bottom: none;
-}
-
-.accordion-content li:hover {
-  background: #f8f9fa;
-}
-
-/* Taulukot menneille esityksille - accordion-tyyleillä */
+/* Taulukot menneille esityksille */
 .year-section {
   margin-bottom: 1rem;
 }

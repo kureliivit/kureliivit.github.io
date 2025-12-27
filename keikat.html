@@ -26,9 +26,7 @@
         </button>
         <ul class="nav-links" id="nav-menu">
           <li>
-            <a href="index.html"
-              >Etusivu</a
-            >
+            <a href="index.html">Etusivu</a>
           </li>
           <li><a href="keikat.html">Menneet esitykset</a></li>
           <li><a href="ryhma.html">Näyttelijät</a></li>
@@ -45,9 +43,7 @@
           <h1 class="section-title">Menneet esitykset</h1>
           <div class="ryhma-content">
             <div class="about-text">
-              <p id="shows-stats">
-                Lasketaan esityksiä...
-              </p>
+              <p id="shows-stats">Lasketaan esityksiä...</p>
             </div>
           </div>
           <section class="image-section">
@@ -61,6 +57,9 @@
           <div class="year-section">
             <h2>2025</h2>
             <table class="past-shows-table">
+              <caption class="sr-only">
+                Esitykset vuodelta 2025
+              </caption>
               <tbody>
                 <tr>
                   <td>
@@ -179,6 +178,9 @@
           <div class="year-section">
             <h2>2024</h2>
             <table class="past-shows-table">
+              <caption class="sr-only">
+                Esitykset vuodelta 2024
+              </caption>
               <tbody>
                 <tr>
                   <td>
@@ -222,6 +224,9 @@
           <div class="year-section">
             <h2>2023</h2>
             <table class="past-shows-table">
+              <caption class="sr-only">
+                Esitykset vuodelta 2023
+              </caption>
               <tbody>
                 <tr>
                   <td>Yksityistilaisuus - pikkujoulut, Kangasala, 8.12.2023</td>
@@ -239,13 +244,10 @@
       </section>
     </main>
 
-    <footer>
-      <div class="container">
-        <p>&copy; 2025 Kureliivit ja jaloimmat reidet.</p>
-        <p>Improvisaatioteatteria rakkaudella ja intohimolla ❤️</p>
-      </div>
-    </footer>
+    <site-footer></site-footer>
 
+    <script src="js/components/site-footer.js"></script>
+    <script src="js/show-statistics.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
