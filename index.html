@@ -96,46 +96,50 @@
       }
 
       .hero-image {
-  position: relative;
-  width: 100%;
-  padding-top: 40%;       /* Korkeus suhteessa leveyteen */
-  overflow: hidden;
+        margin: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        position: relative;
       }
 
-
       .hero-content {
-  position: absolute;
-  top: 10%;               
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 90%;
-  z-index: 10;
-  color: white;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 10;
+        width: 100%;
       }
 
       .hero-title {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin: 0;
+        color: white;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
       }
 
       .hero-subtitle {
-  font-size: 1.2rem;
-  font-weight: 500;
+        font-size: 1.3rem;
+        color: white;
+        margin: 0.5rem 0 0 0;
+        font-weight: 500;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
       }
 
-.hero-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;    
-  object-position: top center;
-  display: block;
-}
+      .hero-image img {
+        max-width: 100%;
+        max-height: 40vh;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
 
       .section {
         padding: 60px 0;
@@ -447,15 +451,23 @@
       }
 
       @media (max-width: 768px) {
-  .hero-image {
-    padding-top: 60%; 
+        .hero-image {
+          margin: 0;
+          padding: 0;
+          min-height: 45vh;
+        }
 
         .hero-title {
-          font-size: 2rem;
+          font-size: 2.5rem;
+          margin-top: 2rem;
         }
 
         .hero-subtitle {
-          font-size: 1rem;
+          font-size: 1.1rem;
+        }
+
+        .hero-image img {
+          max-height: 35vh;
         }
 
         .about-content {
