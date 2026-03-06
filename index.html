@@ -517,17 +517,12 @@
 #tietoa {
     padding-top: 30px; /* tai 0px jos haluat todella kiinni */
 }
-
-      .image-section img[src*="IMG_ryhmarivi01" i],
-.image-section img[src*="IMG_flyygeli004" i],
-.image-section img[src*="ryhma_kehys" i] {
-  display: none !important;
-}
-
-/* Jos sektion sisällä ei ole enää näkyviä kuvia, piilotetaan koko section */
-.image-section:has(img[style*="display: none"]) {
-  display: none !important;
-}
+      
+      /* Piilottaa kaikki kuvat ja koko sektion, jos siinä on hidden-luokka */
+      .image-section.hidden {
+        display: none !important; /* koko lohko katoaa */
+        padding: 0;               /* välit nollaan */
+      }
       
     </style>
   </head>
@@ -605,7 +600,7 @@
         </div>
       </section>
 
-      <section class="image-section">
+      <section class="image-section hidden">
         <div class="container">
           <!-- Lapa: Vaihda kuva src-kohtaan -->
           <img
@@ -681,7 +676,7 @@ Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
         </div>
       </section>
 
-      <section class="image-section">
+      <section class="image-section hidden">
         <div class="container">
           <!-- Lapa: Vaihda kuva src-kohtaan -->
           <img
@@ -888,7 +883,7 @@ Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
         </div>
       </section>
 
-      <section class="image-section">
+      <section class="image-section hidden">
         <div class="container">
           <!-- Lapa: Vaihda kuva src-kohtaan -->
           <img
