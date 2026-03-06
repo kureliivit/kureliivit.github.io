@@ -517,6 +517,13 @@
 #tietoa {
     padding-top: 30px; /* tai 0px jos haluat todella kiinni */
 }
+
+      /* Piilottaa kuvat riippumatta isoista/pienistä kirjaimista */
+      img[src*="IMG_ryhmarivi01" i],
+      img[src*="IMG_flyygeli004" i],
+      img[src*="ryhma_kehys" i] {
+        display: none !important;
+      }
       
     </style>
   </head>
