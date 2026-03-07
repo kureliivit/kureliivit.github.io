@@ -31,20 +31,17 @@
       }
 
       header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  background: #5a2d0c; /* lämmin tumma ruskea */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
       }
 
       nav {
         display: flex;
-        justify-content: center;
         align-items: center;
-        padding: 1rem 0;
       }
 
       .logo {
@@ -63,14 +60,11 @@
       }
 
       .nav-links a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        transition: color 0.3s ease;
+        color: white;
       }
 
       .nav-links a:hover {
-        color: #d35400;
+        color: #ffd8b5;
       }
 
       /* Focus indicators for accessibility */
@@ -406,14 +400,10 @@
 
       /* Mobile menu button */
       .menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-        color: #333;
-        padding: 10px;
-        border-radius: 4px;
+        display: block;
+        margin-left: auto;
+        font-size: 2rem;
+        color: white;
       }
 
       .menu-toggle:focus {
