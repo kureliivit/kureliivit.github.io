@@ -337,12 +337,12 @@
       }
 
       .contact-text {
-        text-align: center;    /* keskittää tekstin */
-        font-size: 0.9rem;     /* hieman pienempi kirjasinkoko */
-        max-width: 600px;      /* ei veny liian leveäksi riville */
-        margin: 0 auto 1.5rem auto; /* keskitys ja vähän tilaa alapuolelle */
+        display: block;         /* tärkeää, jotta margin-auto toimii */
+        text-align: center;     /* keskittää rivin sisällä olevan tekstin */
+        font-size: 0.9rem;      /* pienempi kirjasinkoko */
+        max-width: 600px;       /* ei veny liian leveäksi */
+        margin: 0 auto 1.5rem;  /* keskittää divin ja lisää tilaa alapuolelle */
       }
-
 
 
       .contact-grid {
