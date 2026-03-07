@@ -338,7 +338,7 @@
 
       .contact-text {
         display: block;         /* tärkeää, jotta margin-auto toimii */
-        text-align: center;     /* keskittää rivin sisällä olevan tekstin */
+        text-align: center !important;     /* keskittää rivin sisällä olevan tekstin */
         font-size: 0.9rem;      /* pienempi kirjasinkoko */
         max-width: 600px;       /* ei veny liian leveäksi */
         margin: 0 auto 1.5rem;  /* keskittää divin ja lisää tilaa alapuolelle */
@@ -932,15 +932,14 @@ Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
         <div class="container">
           <h2 class="section-title">Ota yhteyttä</h2>
           <div class="about-content">
-            <!-- Keskitetty teksti flexin ulkopuolella -->
-            <div class="contact-intro">
-              <p>
-                Impro on parasta paikan päällä koettuna! Olemme esiintyneet kulttuurifestivaaleilla sekä erilaisissa yritys- ja yksityistilaisuuksissa.
-                Kaipaatko viihdykettä elämän huippuhetkiin tai piristystä arkeen?
-                Ota yhteyttä, niin suunnitellaan juuri sinun tarpeisiisi sopiva improesitys tai -koulutus!
-              </p>
-            </div>
-          </div>
+      <div class="about-text">
+        <p>
+          Impro on parasta paikan päällä koettuna! Olemme esiintyneet kulttuurifestivaaleilla sekä erilaisissa yritys- ja yksityistilaisuuksissa.
+          Kaipaatko viihdykettä elämän huippuhetkiin tai piristystä arkeen?
+          Ota yhteyttä, niin suunnitellaan juuri sinun tarpeisiisi sopiva improesitys tai -koulutus!
+        </p>
+      </div>
+    </div>
           
           <div class="contact-grid">
             <div class="contact-item">
