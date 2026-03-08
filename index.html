@@ -57,13 +57,13 @@
       }
 
       .site-logo img {
-        height: 48px;
+        height: 42px;
         width: auto;
         display: block;
       }
 
       .nav-links {
-        display: flex;
+        display: none;
         list-style: none;
         gap: 2rem;
       }
@@ -97,8 +97,7 @@
       }
 
       .hero-image {
-        margin-top: 100px;
-        margin: 0;
+        margin-top: 80px;
         padding: 0;
         width: 100%;
       }
@@ -568,7 +567,7 @@
   <body>
     <a href="#esitykset" class="skip-link">Siirry sisältöön</a>
     <header>
-      <nav class="container" aria-label="Päänavigaatio">
+      <nav class="container nav-container" aria-label="Päänavigaatio">
         
         <a href="#hero" class="site-logo">
     <img src="kureliivit_bannerilogo.PNG" alt="Kureliivit-yläpalkkilogo">
@@ -583,7 +582,6 @@
           ☰
         </button>
         <ul class="nav-links" role="menubar" id="nav-menu">
-          <li><a href="#hero" role="menuitem">Kureliivit ja jaloimmat reidet</a></li>
           <li><a href="#esitykset" role="menuitem">Tulevat esitykset</a></li>
           <li><a href="#menneet-keikat" role="menuitem">Tehdyt keikat</a></li>
           <li><a href="#yhteystiedot" role="menuitem">Yhteystiedot</a></li>
