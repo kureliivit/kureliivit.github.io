@@ -18,11 +18,10 @@
       }
 
       body {
-        font-family: "Inter", sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background: #f8f9fa; /* tasainen harmaa */
-        padding-top: 80px;
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f8f9fa; /* tasainen harmaa */
       }
 
       .container {
@@ -38,13 +37,14 @@
         top: 0;
         width: 100%;
         z-index: 1000;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
       }
 
-      .nav-container {
+      nav {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        padding: 0.3rem 0;
+        padding: 1rem 0;
       }
 
       .logo {
@@ -56,14 +56,8 @@
         background-clip: text;
       }
 
-      .site-logo img {
-        height: 68px;
-        width: auto;
-        display: block;
-      }
-
       .nav-links {
-        display: none;
+        display: flex;
         list-style: none;
         gap: 2rem;
       }
@@ -97,6 +91,8 @@
       }
 
       .hero-image {
+        margin-top: 100px;
+        margin: 0;
         padding: 0;
         width: 100%;
       }
@@ -128,6 +124,7 @@
       }
 
       .hero-image img {
+        margin-top: 30px;
         width: 100%;
         height: auto;
         display: block;
@@ -408,7 +405,7 @@
 
       /* Mobile menu button */
       .menu-toggle {
-        display: block;
+        display: none;
         background: none;
         border: none;
         font-size: 1.5rem;
@@ -559,18 +556,13 @@
 .section + .image-section.hidden {
   padding-bottom: 30px !important; /* jos image-section piilotettu, edellinen section lähemmäs */
 }
-    
+      
     </style>
   </head>
   <body>
     <a href="#esitykset" class="skip-link">Siirry sisältöön</a>
     <header>
-      <nav class="container nav-container" aria-label="Päänavigaatio">
-        
-        <a href="#hero" class="site-logo">
-    <img src="kureliivit_bannerilogo.PNG" alt="Kureliivit-yläpalkkilogo">
-  </a>
-        
+      <nav class="container" aria-label="Päänavigaatio">
         <button
           class="menu-toggle"
           aria-expanded="false"
@@ -580,6 +572,7 @@
           ☰
         </button>
         <ul class="nav-links" role="menubar" id="nav-menu">
+          <li><a href="#hero" role="menuitem">Kureliivit ja jaloimmat reidet</a></li>
           <li><a href="#esitykset" role="menuitem">Tulevat esitykset</a></li>
           <li><a href="#menneet-keikat" role="menuitem">Tehdyt keikat</a></li>
           <li><a href="#yhteystiedot" role="menuitem">Yhteystiedot</a></li>
