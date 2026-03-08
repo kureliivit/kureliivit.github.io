@@ -40,11 +40,11 @@
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
       }
 
-      nav {
+      .nav-container {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        padding: 1rem 0;
+        padding: 0.7rem 0;
       }
 
       .logo {
@@ -54,6 +54,12 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+      }
+
+      .site-logo img {
+        height: 48px;
+        width: auto;
+        display: block;
       }
 
       .nav-links {
@@ -405,7 +411,7 @@
 
       /* Mobile menu button */
       .menu-toggle {
-        display: none;
+        display: block;
         background: none;
         border: none;
         font-size: 1.5rem;
@@ -563,6 +569,11 @@
     <a href="#esitykset" class="skip-link">Siirry sisältöön</a>
     <header>
       <nav class="container" aria-label="Päänavigaatio">
+        
+        <a href="#hero" class="site-logo">
+    <img src="kureliivit_bannerilogo.PNG" alt="Kureliivit-yläpalkkilogo">
+  </a>
+        
         <button
           class="menu-toggle"
           aria-expanded="false"
