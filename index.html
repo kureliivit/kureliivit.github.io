@@ -1,226 +1,1094 @@
 <!DOCTYPE html>
 <html lang="fi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kureliivit</title>
-  <style>
-    /* --- Yleiset asetukset --- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Improvisaatioteatteriryhmä Kureliivit ja jaloimmat reidet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      font-family: "Inter", sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f8f9fa;
-    }
+      body {
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f8f9fa; /* tasainen harmaa */
+      }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-    ul {
-      list-style: none;
-    }
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
 
-    /* --- Header & nav --- */
-    header {
-      background: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #ddd;
-    }
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 0;
+      }
 
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0.5rem 1rem;
-      position: relative;
-    }
-
-    .site-logo img {
-      height: 50px;
-      display: block;
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      z-index: 1100;
-      position: relative;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .nav-links li a {
-      padding: 0.5rem 1rem;
-    }
-
-    /* --- Hero image --- */
-    #hero {
-      width: 100%;
-      height: 80vh;
-      background: url('kureliivit_bannerilogo.PNG') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #hero h1 {
-      color: #fff;
-      background: rgba(0,0,0,0.5);
-      padding: 1rem 2rem;
-      font-size: 2rem;
-      border-radius: 5px;
-    }
-
-    /* --- Section --- */
-    section {
-      padding: 4rem 1rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    section h2 {
-      margin-bottom: 1.5rem;
-      text-align: left;
-      font-size: 2rem;
-    }
-
-    /* --- Footer --- */
-    footer {
-      background: #222;
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-
-    footer p {
-      font-size: 0.85rem;
-      line-height: 1.5;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* --- Mobiili --- */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        background: linear-gradient(45deg, #e74c3c, #f39c12);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       .nav-links {
-        flex-direction: column;
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #d35400;
+      }
+
+      /* Focus indicators for accessibility */
+      .nav-links a:focus,
+      .skip-link:focus,
+      .accordion-header:focus,
+      .contact-grid a:focus {
+        outline: none;
+        background: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transform: translateY(-1px);
+        transition: all 0.2s ease;
+      }
+
+      .nav-links a:focus {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+      }
+
+      .hero-image {
+        margin-top: 100px;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      .hero-content {
         position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(255,255,255,0.95);
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 10;
+        width: 100%;
       }
 
-      .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin: 0;
+        color: white;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
       }
 
-      .nav-links li a {
-        border-bottom: 1px solid #eee;
+      .hero-subtitle {
+        font-size: 1.3rem;
+        color: white;
+        margin: 0.5rem 0 0 0;
+        font-weight: 500;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
       }
-    }
-  </style>
-</head>
-<body>
 
-  <!-- --- Header --- -->
-  <header>
-    <nav class="nav-container" aria-label="Päänavigaatio">
-      <a href="#hero" class="site-logo">
-        <img src="kureliivit_bannerilogo.PNG" alt="Kureliivit-headerlogo">
-      </a>
+      .hero-image img {
+        margin-top: 30px;
+        width: 100%;
+        height: auto;
+        display: block;
+      }
 
-      <button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Avaa navigaatiovalikko">
-        ☰
-      </button>
+      .section {
+        padding: 60px 0;
+        background: white;
+      }
 
-      <ul class="nav-links" id="nav-menu">
-        <li><a href="#esitykset">Tulevat esitykset</a></li>
-        <li><a href="#menneet-keikat">Tehdyt keikat</a></li>
-        <li><a href="#yhteystiedot">Yhteystiedot</a></li>
-      </ul>
-    </nav>
-  </header>
+      .section:nth-child(even) {
+        background: #f8f9fa;
+      }
 
-  <!-- --- Hero --- -->
-  <section id="hero">
-    <h1>Tervetuloa Kureliivien maailmaan!</h1>
-  </section>
+      .section-title {
+        text-align: left;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        background: none;
+        color: #6d1a00; /* Tummempi punaruskea, AA-kontrasti valkoisella taustalla */
+        font-weight: 600;
+      }
 
-  <!-- --- Tulevat esitykset --- -->
-  <section id="esitykset">
-    <h2>Tulevat esitykset</h2>
-    <p>Esitykset ja tapahtumat, joissa voit nähdä meidät livenä.</p>
-  </section>
+      .about-content {
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+        gap: 3rem;
+        align-items: start;
+      }
 
-  <!-- --- Tehdyt keikat --- -->
-  <section id="menneet-keikat">
-    <h2>Tehdyt keikat</h2>
-    <p>Katso kuvia ja videoita menneistä esityksistä.</p>
-  </section>
+      .about-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
 
-  <!-- --- Yhteystiedot --- -->
-  <section id="yhteystiedot">
-    <h2>Yhteystiedot</h2>
-    <p>Ota yhteyttä, niin suunnittelemme juuri sinun tarpeisiisi sopivan esityksen!</p>
-  </section>
+      .about-text p {
+        margin-bottom: 1rem;
+      }
 
-  <!-- --- Footer --- -->
-  <footer>
-    <p>© 2026 Kureliivit ry | Y-tunnus 1234567-8</p>
-  </footer>
+      .about-image {
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
 
-  <!-- --- JavaScript hamburgerille --- -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
+      .about-image img {
+        max-width: 300px;
+        height: auto;
+      }
 
-      if (!menuToggle || !navLinks) return;
+      .shows-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
 
-      menuToggle.addEventListener('click', function () {
-        navLinks.classList.toggle('active');
-        menuToggle.setAttribute(
-          'aria-expanded',
-          navLinks.classList.contains('active')
-        );
-      });
+      .show-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
 
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', false);
+      .show-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .show-date {
+        color: #8b2c00;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .show-title {
+        font-size: 1.3rem;
+        margin: 0.5rem 0;
+        color: #333;
+      }
+
+      .show-venue {
+        color: #666;
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+
+      .entry-info {
+        margin-top: 1.5rem;
+      }
+
+      .show-intro {
+        margin-bottom: 1.5rem;
+      }
+
+     .show-image {
+       width: 100%;
+       height: 220px;
+       object-fit: cover;
+       border-radius: 10px;
+       margin: 1rem 0;
+     } 
+
+      .past-gigs-list {
+        margin: 0 auto;
+        list-style: none;
+        padding: 0;
+      }
+
+      .past-gigs-list li {
+        background: white;
+        margin-bottom: 1rem;
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        font-size: 1.1rem;
+        border-left: 4px solid #d35400;
+        transition: transform 0.2s ease;
+      }
+
+      .past-gigs-list li:hover {
+        transform: translateX(5px);
+      }
+
+      .accordion {
+        margin: 0 auto;
+        max-width: 100%;
+      }
+
+      .accordion-item {
+        background: white;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .accordion-header {
+        background: white;
+        color: #a8431a; /* Vaaleampi mutta silti kontrastinen */
+        :focus-visible {
+          outline: 3px solid #d35400;
+          outline-offset: 2px;
+        }
+        padding: 1.5rem 2rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.3rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        width: 100%;
+        text-align: left;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .accordion-header:hover {
+        background: #f8f9fa;
+        color: #d35400;
+      }
+
+      .accordion-icon {
+        font-size: 1.2rem;
+        color: #a8431a;
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+
+      .accordion-header:hover .accordion-icon {
+        color: #d35400;
+      }
+
+      .accordion-item.active .accordion-icon {
+        transform: rotate(180deg);
+      }
+
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .accordion-item.active .accordion-content {
+        max-height: none;
+      }
+
+      .accordion-content ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .accordion-content li {
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 1rem;
+        color: #333;
+        transition: background 0.2s ease;
+      }
+
+      .accordion-content li:last-child {
+        border-bottom: none;
+      }
+
+      .accordion-content li:hover {
+        background: #f8f9fa;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .contact-item {
+        padding: 2rem;
+      }
+
+      .contact-icon {
+        font-size: 3rem;
+        background: linear-gradient(45deg, #e74c3c, #f39c12);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+      }
+
+      footer {
+        background: #333;
+        color: #ccc;
+        padding: 2rem 0;
+        text-align: center;
+      }
+
+      footer p {
+  font-size: 0.85rem;
+  margin: 5px 0;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+      }
+
+      /* Skip navigation for accessibility */
+      .skip-link {
+        position: absolute;
+        top: -100px;
+        left: 6px;
+        background: #000;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 0 0 4px 4px;
+        font-weight: bold;
+        z-index: 10000;
+        transition: top 0.3s;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+
+      /* Screen reader only content */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Mobile menu button */
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #333;
+        padding: 10px;
+        border-radius: 4px;
+      }
+
+      .menu-toggle:focus {
+        outline: none;
+        background: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transform: translateY(-1px);
+        transition: all 0.2s ease;
+      }
+
+      .image-section {
+        padding: 60px 0;
+        background: white;
+      }
+
+      .image-section:nth-child(even) {
+        background: #f8f9fa;
+      }
+
+      .image-section .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image-section img {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+        object-fit: contain;
+      }
+
+      @media (max-width: 768px) {
+        .hero-image {
+          margin: 0;
+          padding: 0;
+          min-height: 45vh;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+          margin-top: 2rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+
+
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+
+        .about-image {
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+        }
+
+        .image-section {
+          padding: 40px 20px;
+        }
+
+        .image-section img {
+          max-height: 350px;
+          margin-top: 10px
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: rgba(255, 255, 255, 0.98);
+          flex-direction: column;
+          gap: 0;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          padding: 1rem 0;
+          transform: translateY(-100%);
+          opacity: 0;
+          visibility: hidden;
+          transition: transform 0.3s ease, opacity 0.3s ease,
+            visibility 0.3s ease;
+        }
+
+        .nav-links.active {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .nav-links li {
+          padding: 0;
+        }
+
+        .nav-links a {
+          display: block;
+          padding: 1rem 2rem;
+          border-bottom: 1px solid #eee;
+        }
+
+        .nav-links a:last-child {
+          border-bottom: none;
+        }
+      }
+      /* Hero-kuvan ja "Tietoa meistä" -tekstin välin pienentäminen */
+      
+      #tietoa {
+        padding-top: 40px; /* tai 0px jos haluat todella kiinni */
+        padding-bottom: 5px;
+      }
+      
+      #esitykset {
+    padding-top: 0px; /* tai 0px jos haluat todella kiinni */
+}
+      
+      #menneet-keikat {
+    padding-top: 40px; /* tai 0px jos haluat todella kiinni */
+}
+      
+      /* Piilottaa kaikki kuvat ja koko sektion, jos siinä on hidden-luokka */
+      .image-section.hidden {
+        display: none !important; /* koko lohko katoaa */
+        padding: 0;               /* välit nollaan */
+      }
+
+    /* --- Tilapäinen välien pienennys ennen kuin kuvat lisätään --- */
+.section {
+  padding-top: 30px !important;    /* alkuperä 60px */
+  padding-bottom: 30px !important; /* alkuperä 60px */
+}
+
+.image-section.hidden + .section {
+  padding-top: 30px !important; /* jos image-section piilotettu, seuraava section tulee lähemmäs */
+}
+
+.section + .image-section.hidden {
+  padding-bottom: 30px !important; /* jos image-section piilotettu, edellinen section lähemmäs */
+}
+      
+    </style>
+  </head>
+  <body>
+    <a href="#esitykset" class="skip-link">Siirry sisältöön</a>
+    <header>
+      <nav class="container" aria-label="Päänavigaatio">
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Avaa navigaatiovalikko"
+        >
+          ☰
+        </button>
+        <ul class="nav-links" role="menubar" id="nav-menu">
+          <li><a href="#hero" role="menuitem">Kureliivit ja jaloimmat reidet</a></li>
+          <li><a href="#esitykset" role="menuitem">Tulevat esitykset</a></li>
+          <li><a href="#menneet-keikat" role="menuitem">Tehdyt keikat</a></li>
+          <li><a href="#yhteystiedot" role="menuitem">Yhteystiedot</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-image" id="hero">
+  <div class="hero-content sr-only">
+    <h1 class="hero-title">Kureliivit ja jaloimmat reidet</h1>
+    <p class="hero-subtitle">
+      Pirkanmaalainen improvisaatioteatteriryhmä
+    </p>
+  </div>
+  <img
+    src="kureliivit_heroimg2026_2.PNG"
+    alt="Improvisaatioteatteriryhmä Kureliivit ja jaloimmat reidet ryhmäkuva"
+    role="img"
+  />
+      </section>
+
+      <section class="section" id="tietoa" tabindex="-1">
+        <div class="container">
+          <div class="about-content">
+            <div class="about-text">
+              <p><b>Tervetuloa Kureliivit ja jaloimmat reidet -kotisivuille!</b>
+              </p>
+                
+              <p>
+                Olemme pirkanmaalainen kokeneista
+                improharrastajista koostuva improvisaatioteatteriryhmä, joka on
+                perustettu vuonna 2023.
+                </p> 
+
+              <p>
+                Kureliivien improlle on ominaista energisyys ja esitysten
+                rakentaminen tietyn teeman ympärille. Pyrimme löytämään
+                jatkuvasti uusia ja yllättäviä tapoja toteuttaa improa lavalla.
+                <br>Jokainen esityksemme on ainutlaatuinen kokemus, joka syntyy
+                yleisön ja esiintyjien välisessä vuorovaikutuksessa.
+              </p>
+
+            </div>
+            <aside class="about-image">
+              <img
+                src="kureliivit-logo.png"
+                alt="Kureliivit ja jaloimmat reidet logo"
+                role="presentation"
+              />
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="image-section hidden">
+        <div class="container">
+          <!-- Lapa: Vaihda kuva src-kohtaan -->
+          <img
+            src="kureliivit-logo.png"
+            alt="Kureliivit-logo"
+          />
+        </div>
+      </section>
+
+      <section class="section" id="esitykset">
+        <div class="container">
+          <h2 class="section-title">Tulevat esitykset</h2>
+          <div class="shows-grid">
+            
+            <article class="show-card">
+              <time class="show-date" datetime="2026-03-25T19:00">25.3.2026 klo 19</time>
+              <h3 class="show-title">Improklubi Riihi</h3>
+              <p class="show-venue">Bistro Vilja, Hatanpään valtatie 40, Tampere</p>
+
+              <img src="https://raw.githubusercontent.com/kureliivit/kureliivit.github.io/refs/heads/main/kuvat/B651F240-FBE8-4F45-A351-A540AC339A91.jpeg"
+                alt="Improriihi-mainoskuva"
+                class="show-image">
+              
+              <p class="show-intro">
+                
+              </p>
+            </article>
+
+            <article class="show-card">
+              <time class="show-date" datetime="2026-04-25">25.4.2026</time>
+              <h3 class="show-title">Taidepappilan Kehystämättömät:
+                <br>Kureliivit & jaloimmat reidet
+                <br>feat. Kusti Vuorinen</h3>
+              <p class="show-venue">Kuhmalahden Taidepappila, Taidetie 19, Kangasala</p>
+              
+              <img src="https://raw.githubusercontent.com/kureliivit/kureliivit.github.io/refs/heads/main/kuvat/kehystamattomat.JPG"
+     alt="Kehystamattomat-mainoskuva"
+     class="show-image">
+              
+              <p class="show-intro">
+Tapahtuman tarkemmat tiedot julkaistaan myöhemmin. 
+
+                
+              </p>
+            </article>
+
+<article class="show-card">
+              <time class="show-date" datetime="2026-05-13">13.5.2026</time>
+              <h3 class="show-title">"Comeback"</h3>
+              <p class="show-venue">Tehdassaaren kahvila, Souranderintie 2, Nokia</p>
+              <p class="show-intro">
+Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
+   
+              </p>
+            </article>
+
+<article class="show-card">
+              <time class="show-date" datetime="2026-06-10">10.6.2026</time>
+              <h3 class="show-title">Navettakeikka</h3>
+              <p class="show-venue">Hietaniemen Kartanonavetta, Hietaniementie 22, Lempäälä</p>
+  
+  <img src="https://raw.githubusercontent.com/kureliivit/kureliivit.github.io/refs/heads/main/kuvat/42ED4B6B-6925-4B94-A502-EBF5044BF245.png"
+     alt="Navettakeikka-mainoskuva"
+     class="show-image">
+  
+  <p class="show-intro">
+Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
+              
+   </p>
+            </article>
+            
+          </div>
+        </div>
+      </section>
+
+      <section class="image-section hidden">
+        <div class="container">
+          <!-- Lapa: Vaihda kuva src-kohtaan -->
+          <img
+            src="kuvat/IMG_ryhmarivi01.JPG"
+            alt="Kuva Kureliivit ja jaloimmat reidet improvisaatioteatteriryhmästä"
+          />
+        </div>
+      </section>
+
+      <section class="section" id="menneet-keikat">
+        <div class="container">
+          <h2 class="section-title">Tehdyt keikat</h2>
+          <div class="accordion">
+            <div class="accordion-item active">
+              <button
+                class="accordion-header"
+                aria-expanded="true"
+                aria-controls="accordion-2026"
+                id="accordion-header-2026"
+              >
+                2026
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div
+                class="accordion-content"
+                id="accordion-2026"
+                aria-labelledby="accordion-header-2026"
+                aria-hidden="false"
+              >
+                <ul>
+
+                  <li>
+                    Supersattumia-improshow,
+                    Tukkateatteri, Tampere, 5.3.2026
+                  </li>
+                  
+                  <li>
+                    Tammikuun vatsakohdat -improshow,
+                    Kortteliteatteri, Helsinki, 31.1.2026
+                  </li>
+                  
+                <li>
+                  Yksityistilaisuus - vauvakutsut, Pälkäne, 25.1.2026
+                </li>
+          
+                </ul>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <button
+                class="accordion-header"
+                aria-expanded="true"
+                aria-controls="accordion-2025"
+                id="accordion-header-2025"
+              >
+                2025
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div
+                class="accordion-content"
+                id="accordion-2025"
+                aria-labelledby="accordion-header-2025"
+                aria-hidden="false"
+              >
+                <ul>
+                  <li>
+                    Yksityistilaisuus - pikkujoulut, Haulitorni, Tampere,
+                    12.12.2025
+                  </li>
+
+                  <li>
+                    Improtehdas-klubi: Jouluprässi, Tehdassaaren kahvila, Nokia,
+                    12.12.2025
+                  </li>
+
+                  <li>
+                    Yksityistilaisuus - pikkujoulut, Akun Tehdas, Ylöjärvi,
+                    21.11.2025
+                  </li>
+
+                  <li>Yksityistilaisuus - pikkujoulut, Nokia, 14.11.2025</li>
+
+                  <li>
+                    Alakulttuurifest, runoimpro, Finlayson, Tampere, 8.11.2025
+                  </li>
+
+                  <li>
+                    Improtehdas-klubi: Valtapeli, Tehdassaaren kahvila, Nokia,
+                    7.11.2025
+                  </li>
+
+                  <li>Yksityistilaisuus - Gaala, Lempäälä, 1.11.2025</li>
+
+                  <li>
+                    Kauhujen Kangasala 2025: Impro Horror, Kahvila Tyyne,
+                    25.10.2025
+                  </li>
+                  <li>
+                    Yksityistilaisuus - syntymäpäivät, Svenska Klubben, Tampere,
+                    4.10.2025
+                  </li>
+                  <li>
+                    Improtehdas-klubi: Oi, maamme!, Tehdassaaren kahvila, Nokia,
+                    3.10.2025
+                  </li>
+                  <li>
+                    Improtehdas-klubi: Suora lähetys, Tehdassaaren kahvila,
+                    Nokia, 5.9.2025
+                  </li>
+                  <li>Amis-Gaala, Virta-kampus, Lempäälä, 29.8.2025</li>
+                  <li>
+                    Yksityistilaisuus - työpaikan virkistyspäivä, Ravintola
+                    Tillikka, Tampere, 22.8.2025
+                  </li>
+                  <li>Tapahtumien yö - Artteli on art, Tampere, 7.8.2025</li>
+                  <li>Improriihi, Ravintola Teerenpeli, Tampere, 28.5.2025</li>
+                  <li>
+                    Improtehdas 2.0: Kevätjuhla, Tehdassaaren kahvila, Nokia,
+                    16.5.2025
+                  </li>
+                  <li>Yksityistilaisuus - syntymäpäivät, Orivesi, 3.5.2025</li>
+                  <li>
+                    Improtehdas 2.0: Koukuttavat käänteet, Tehdassaaren kahvila,
+                    Nokia, 25.4.2025
+                  </li>
+                  <li>
+                    Improtehdas 2.0: Runon ja rytmin ilta, Tehdassaaren kahvila,
+                    Nokia, 21.3.2025
+                  </li>
+                  <li>Yksityistilaisuus - syntymäpäivät, Tampere, 22.2.2025</li>
+                  <li>
+                    Improtehdas 2.0: Kerrostaloelämää, Tehdassaaren kahvila,
+                    Nokia, 21.2.2025
+                  </li>
+                  <li>
+                    Improtehdas 2.0: Reploja ja repeilyjä, Tehdassaaren kahvila,
+                    Nokia, 17.1.2025
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button
+                class="accordion-header"
+                aria-expanded="false"
+                aria-controls="accordion-2024"
+                id="accordion-header-2024"
+              >
+                2024
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div
+                class="accordion-content"
+                id="accordion-2024"
+                aria-labelledby="accordion-header-2024"
+                aria-hidden="true"
+              >
+                <ul>
+                  <li>
+                    Pikkujoulushow, Tehdassaaren kahvila, Nokia, 18.12.2024
+                  </li>
+                  <li>Yksityistilaisuus - pikkujoulut, Lempäälä, 13.12.2024</li>
+                  <li>Yksityistilaisuus - pikkujoulut, Nokia, 30.11.2024</li>
+                  <li>Yksityistilaisuus - pikkujoulut, Tampere, 15.11.2024</li>
+                  <li>Yksityistilaisuus - pikkujoulut, Tampere, 14.11.2024</li>
+                  <li>Yksityistilaisuus - pikkujoulut, Tampere, 2.11.2024</li>
+                  <li>Improtehdas, Tehdassaaren kahvila, Nokia, 2.10.2024</li>
+                  <li>Improfestarit, Ravintola Opus K, Lohja, 21.9.2024</li>
+                  <li>Runoilta, Ravintola Myrskyluoto, Kangasala, 27.8.2024</li>
+                  <li>
+                    Yksityistilaisuus - koulutus- ja virkistyspäivä, Kangasala,
+                    13.6.2024
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button
+                class="accordion-header"
+                aria-expanded="false"
+                aria-controls="accordion-2023"
+                id="accordion-header-2023"
+              >
+                2023
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div
+                class="accordion-content"
+                id="accordion-2023"
+                aria-labelledby="accordion-header-2023"
+                aria-hidden="true"
+              >
+                <ul>
+                  <li>Yksityistilaisuus - pikkujoulut, Kangasala, 8.12.2023</li>
+                  <li>Yksityistilaisuus - pikkujoulut, Tampere, 1.12.2023</li>
+                  <li>Yksityistilaisuus - häät, Pirkkala, 23.9.2023</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="image-section hidden">
+        <div class="container">
+          <!-- Lapa: Vaihda kuva src-kohtaan -->
+          <img
+            src="kuvat/ryhma_kehys.png"
+            alt="Kuva Kureliivit ja jaloimmat reidet improvisaatioteatteriryhmästä"
+          />
+        </div>
+      </section>
+
+      <section class="section" id="yhteystiedot">
+        <div class="container">
+          <h2 class="section-title">Ota yhteyttä</h2>
+          <div class="about-content">
+      <div class="about-text">
+        <p>
+          Impro on parasta paikan päällä koettuna! <br>Olemme esiintyneet kulttuurifestivaaleilla sekä erilaisissa yritys- ja yksityistilaisuuksissa.
+          <br>Kaipaatko viihdykettä elämän huippuhetkiin tai piristystä arkeen?
+          <br>Ota yhteyttä, niin suunnitellaan juuri sinun tarpeisiisi sopiva improesitys tai -koulutus!
+        </p>
+      </div>
+    </div>
+          
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <h3>Sähköposti</h3>
+              <p>Kureliivit@gmail.com</p>
+              <p>
+                Kysy lisätietoja esityksistä tai varaa ryhmämme tilaisuuteesi!
+              </p>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">📱</div>
+              <h3>Sosiaalinen media</h3>
+              <p>@kureliivitjajaloimmatreidet</p>
+
+              <p>
+                Seuraa meitä
+                <a href="https://www.instagram.com/kureliivitjajaloimmatreidet/"
+                  >Instagramissa</a
+                >
+                ja
+                <a href="https://www.facebook.com/profile.php?id=61566045216951"
+                  >Facebookissa</a>, niin saat tuoreimmat kuulumiset keikoilta ja kulissien takaa.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+  <div class="container">
+    <p>
+      &copy; <script>document.write(new Date().getFullYear());</script>
+      Improvisaatioteatteriyhdistys <br>Kureliivit ja jaloimmat reidet ry ·
+      Y-tunnus: 3482314-4
+    </p>
+    <p>Improvisaatioteatteria rakkaudella ja intohimolla ❤️</p>
+  </div>
+</footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
         });
       });
-    });
-  </script>
 
-</body>
+      // Header background on scroll
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.background = "rgba(255, 255, 255, 0.98)";
+        } else {
+          header.style.background = "rgba(255, 255, 255, 0.95)";
+        }
+      });
+
+      // Mobile menu functionality
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          const isActive = navLinks.classList.contains("active");
+          navLinks.classList.toggle("active");
+
+          // Update ARIA attributes
+          menuToggle.setAttribute("aria-expanded", !isActive);
+          menuToggle.setAttribute(
+            "aria-label",
+            !isActive ? "Sulje navigaatiovalikko" : "Avaa navigaatiovalikko"
+          );
+        });
+
+        // Close menu when clicking on links
+        navLinks.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Avaa navigaatiovalikko");
+          });
+        });
+      }
+
+      // Accordion functionality
+      // Close 2025 accordion on mobile view on page load
+      function handleAccordionOnResize() {
+        const firstAccordion = document.querySelector(".accordion-item");
+        if (firstAccordion) {
+          const header = firstAccordion.querySelector(".accordion-header");
+          const content = firstAccordion.querySelector(".accordion-content");
+
+          if (window.innerWidth <= 768) {
+            // Mobile: close accordion
+            firstAccordion.classList.remove("active");
+            if (header) header.setAttribute("aria-expanded", "false");
+            if (content) content.setAttribute("aria-hidden", "true");
+          } else {
+            // Desktop: open accordion
+            firstAccordion.classList.add("active");
+            if (header) header.setAttribute("aria-expanded", "true");
+            if (content) content.setAttribute("aria-hidden", "false");
+          }
+        }
+      }
+
+      // Run on page load
+      handleAccordionOnResize();
+
+      // Run on window resize
+      window.addEventListener("resize", handleAccordionOnResize);
+
+      document.querySelectorAll(".accordion-header").forEach((header) => {
+        header.addEventListener("click", () => {
+          const accordionItem = header.parentElement;
+          const content = accordionItem.querySelector(".accordion-content");
+          const isActive = accordionItem.classList.contains("active");
+          accordionItem.classList.toggle("active");
+          header.setAttribute("aria-expanded", !isActive);
+          if (content) {
+            content.setAttribute("aria-hidden", isActive ? "true" : "false");
+          }
+        });
+      });
+
+      // Keyboard navigation for menubar
+      const menuItems = navLinks
+        ? navLinks.querySelectorAll('[role="menuitem"]')
+        : [];
+      menuItems.forEach((item, idx) => {
+        item.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            menuItems[(idx + 1) % menuItems.length].focus();
+          } else if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            menuItems[(idx - 1 + menuItems.length) % menuItems.length].focus();
+          } else if (e.key === "Home") {
+            e.preventDefault();
+            menuItems[0].focus();
+          } else if (e.key === "End") {
+            e.preventDefault();
+            menuItems[menuItems.length - 1].focus();
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
