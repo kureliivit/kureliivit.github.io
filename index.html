@@ -988,20 +988,6 @@ Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
   </div>
 </footer>
 
-    <!-- --- JavaScript hamburger-valikolle --- -->
-    <script>
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-
-        // Päivitetään saavutettavuusattribuutti
-        const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
-        menuToggle.setAttribute('aria-expanded', !expanded);
-      });
-    </script>
-
     <script>
       // Smooth scrolling for navigation links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -1117,5 +1103,30 @@ Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
         });
       });
     </script>
+  
+  <!-- --- JavaScript hamburger-valikolle --- -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+
+      // Päivitetään saavutettavuusattribuutti
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !expanded);
+    });
+
+    // Sulkee valikon, kun linkkiä klikataan (mobiilissa)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', false);
+      });
+    });
+  });
+</script>
+  
   </body>
 </html>
