@@ -42,7 +42,7 @@
 
       nav {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         padding: 1rem 0;
       }
@@ -91,7 +91,6 @@
       }
 
       .hero-image {
-        margin-top: 100px;
         margin: 0;
         padding: 0;
         width: 100%;
@@ -413,6 +412,7 @@
         color: #333;
         padding: 10px;
         border-radius: 4px;
+        margin-left: auto;
       }
 
       .menu-toggle:focus {
@@ -446,6 +446,11 @@
       }
 
       @media (max-width: 768px) {
+        
+        nav {
+          padding: 1rem 20px;
+        }
+        
         .hero-image {
           margin: 0;
           padding: 0;
