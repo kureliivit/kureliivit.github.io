@@ -41,9 +41,20 @@
 
       nav {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between; /* logo vasemmalle, linkit oikealle */
         align-items: center;
         padding: 1rem 0;
+      }
+      
+      .logo-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+      
+      .logo-img {
+        height: 50px; /* säädä tarpeen mukaan */
+        width: auto;
       }
 
       .logo {
@@ -585,6 +596,9 @@
     <a href="#esitykset" class="skip-link">Siirry sisältöön</a>
     <header>
       <nav class="container" aria-label="Päänavigaatio">
+        <a href="#hero" class="site-logo">
+          <img src="kureliivit_bannerilogo.PNG" alt="Kureliivit-header-logo">
+        </a>
         <button
           class="menu-toggle"
           aria-expanded="false"
