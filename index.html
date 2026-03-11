@@ -39,11 +39,11 @@
         box-shadow: 0 2px 20px rgba(0,0,0,0.3);
       }
 
-      .nav-container {
+      nav {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
-        padding: 0.6rem 0;
+        padding: 1rem 0;
       }
 
       .logo {
@@ -53,12 +53,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-      }
-
-      .site-logo img {
-        height: 45px;
-        width: auto;
-        display: block;
       }
 
       .nav-links {
@@ -578,9 +572,6 @@
     <a href="#esitykset" class="skip-link">Siirry sisältöön</a>
     <header>
       <nav class="container" aria-label="Päänavigaatio">
-        <a href="#hero" class="site-logo">
-          <img src="kureliivit_bannerilogo.PNG" alt="Kureliivit-header-logo">
-        </a>
         <button
           class="menu-toggle"
           aria-expanded="false"
@@ -590,6 +581,7 @@
           ☰
         </button>
         <ul class="nav-links" role="menubar" id="nav-menu">
+          <li><a href="#hero" role="menuitem">Kureliivit ja jaloimmat reidet</a></li>
           <li><a href="#esitykset" role="menuitem">Tulevat esitykset</a></li>
           <li><a href="#menneet-keikat" role="menuitem">Tehdyt keikat</a></li>
           <li><a href="#yhteystiedot" role="menuitem">Yhteystiedot</a></li>
