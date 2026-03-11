@@ -1052,23 +1052,34 @@ Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
   const navLinks = document.querySelector(".nav-links");
 
   if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", () => {
-      const isActive = navLinks.classList.toggle("active");
-      menuToggle.setAttribute("aria-expanded", String(isActive));
-      menuToggle.setAttribute(
-        "aria-label",
-        isActive ? "Sulje navigaatiovalikko" : "Avaa navigaatiovalikko"
-      );
-    });
+  menuToggle.addEventListener("click", () => {
+    const isActive = navLinks.classList.toggle("active");
+    menuToggle.setAttribute("aria-expanded", String(isActive));
+    menuToggle.setAttribute(
+      "aria-label",
+      isActive ? "Sulje navigaatiovalikko" : "Avaa navigaatiovalikko"
+    );
+  });
 
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Avaa navigaatiovalikko");
-      });
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Avaa navigaatiovalikko");
     });
-  }
+  });
+
+  document.addEventListener("click", (event) => {
+    const isClickInsideMenu = navLinks.contains(event.target);
+    const isClickOnToggle = menuToggle.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnToggle) {
+      navLinks.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Avaa navigaatiovalikko");
+    }
+  });
+}
 
   function handleAccordionOnResize() {
     const firstAccordion = document.querySelector(".accordion-item");
