@@ -36,14 +36,14 @@
         top: 0;
         width: 100%;
         z-index: 1000;
-        box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.35);
       }
 
       nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.2rem 0;
+        padding: 1.6rem 0;
         position: relative;
       }
       
@@ -52,14 +52,23 @@
         align-items: center;
         text-decoration: none;
         flex-shrink: 0;
+        padding-top: 14px;
       }
       
       .site-logo {
         display: block;
-        height: clamp(60px, 8vw, 90px);
+        height: clamp(80px, 10vw, 130px);
         width: auto;
-        max-width: 260px;
+        max-width: 420px;
         object-fit: contain;
+      }
+
+      .site-logo {
+        transition: transform 0.2s ease;
+      }
+      
+      .site-logo-link:hover .site-logo {
+        transform: scale(1.04);
       }
 
       .logo {
@@ -465,7 +474,7 @@
         margin-left: auto;
         transition: background 0.2s ease;
         flex-shrink: 0;
-        margin-top: 6px;
+        margin-top: -4px;
       }
 
       .menu-toggle:hover {
@@ -585,7 +594,7 @@
     <a href="#esitykset" class="skip-link">Siirry sisältöön</a>
     <header>
   <nav class="container site-nav" aria-label="Päänavigaatio">
-    <a href="#hero" class="site-logo-link" aria-label="Kureliivit etusivulle">
+    <a href="#hero" class="site-logo-link" aria-label="Takaisin etusivulle">
       <img
         src="kureliivit_bannerilogo.PNG"
         alt="Kureliivit-header-logo"
@@ -603,7 +612,6 @@
     </button>
 
     <ul class="nav-links" role="menubar" id="nav-menu">
-      <li><a href="#hero" role="menuitem">Kureliivit ja jaloimmat reidet</a></li>
       <li><a href="#esitykset" role="menuitem">Tulevat esitykset</a></li>
       <li><a href="#menneet-keikat" role="menuitem">Tehdyt keikat</a></li>
       <li><a href="#yhteystiedot" role="menuitem">Yhteystiedot</a></li>
