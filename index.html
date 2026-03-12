@@ -632,7 +632,7 @@
       aria-controls="nav-menu"
       aria-label="Avaa navigaatiovalikko"
     >
-      ☰
+      <span class="menu-icon">☰</span>
     </button>
 
     <ul class="nav-links" role="menubar" id="nav-menu">
@@ -1054,10 +1054,15 @@ Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
 
   const menuToggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
+  const menuIcon = document.querySelector(".menu-icon");
 
   if (menuToggle && navLinks) {
-  menuToggle.addEventListener("click", () => {
-    const isActive = navLinks.classList.toggle("active");
+    menuToggle.addEventListener("click", () => {
+      const isActive = navLinks.classList.toggle("active");
+
+  if (menuIcon) {
+    menuIcon.textContent = isActive ? "✕" : "☰";
+  }
     menuToggle.setAttribute("aria-expanded", String(isActive));
     menuToggle.setAttribute(
       "aria-label",
@@ -1070,6 +1075,7 @@ Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
       navLinks.classList.remove("active");
       menuToggle.setAttribute("aria-expanded", "false");
       menuToggle.setAttribute("aria-label", "Avaa navigaatiovalikko");
+      if (menuIcon) menuIcon.textContent = "☰";
     });
   });
 
@@ -1081,6 +1087,7 @@ Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
       navLinks.classList.remove("active");
       menuToggle.setAttribute("aria-expanded", "false");
       menuToggle.setAttribute("aria-label", "Avaa navigaatiovalikko");
+      if (menuIcon) menuIcon.textContent = "☰";
     }
   });
 }
