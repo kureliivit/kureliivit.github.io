@@ -38,6 +38,25 @@
         z-index: 1000;
         box-shadow: 0 6px 20px rgba(0,0,0,0.35);
       }
+      
+      header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -22px;
+        width: 100%;
+        height: 22px;
+        
+        background: linear-gradient(
+          to bottom,
+          rgba(36,21,15,1) 0%,
+          rgba(36,21,15,0) 100%
+        );
+        
+        pointer-events: none;
+      }
+
+      
 
       nav {
         display: flex;
