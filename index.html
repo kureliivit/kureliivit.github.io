@@ -36,27 +36,9 @@
         top: 0;
         width: 100%;
         z-index: 1000;
-        box-shadow: none;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.35);
       }
       
-      header::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -28px;
-        width: 100%;
-        height: 28px;
-        
-        background: linear-gradient(
-          to bottom,
-          rgba(36,21,15,0.95) 0%,
-          rgba(36,21,15,0.7) 35%,
-          rgba(36,21,15,0.35) 65%,
-          rgba(36,21,15,0) 100%
-        );
-        
-        pointer-events: none;
-      }
     
 
       nav {
