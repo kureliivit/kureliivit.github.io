@@ -91,6 +91,9 @@
         letter-spacing: 0.04em;
         text-transform: uppercase;
         animation: marquee-scroll 18s linear infinite;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
       }
       
       @keyframes marquee-scroll {
@@ -98,7 +101,7 @@
           transform: translateX(0);
         }
         to {
-          transform: translateX(-50%);
+          transform: translateX(-33.333%);
         }
       }
       
@@ -737,6 +740,7 @@
       
       <div class="announcement-bar">
       <div class="announcement-track">
+        <span>25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •</span>
         <span>25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •</span>
         <span>25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •</span>
       </div>
