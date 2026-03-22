@@ -59,10 +59,13 @@
         pointer-events: none;
       }
       
+      main {
+        padding-top: var(--top-stack-height);
+      }
+      
       :root {
-        --header-height: 86px;
         --announcement-height: 44px;
-        --top-stack-height: calc(var(--header-height) + var(--announcement-height));
+        --top-stack-height: 130px;
       }
       
       .announcement-bar {
@@ -216,7 +219,6 @@
 
       .hero-image {
         margin: 0;
-        margin-top: var(--top-stack-height);
         padding: 0;
         width: 100%;
         position: relative;
@@ -651,14 +653,7 @@
           margin-top: 10px
         }
 
-      }
-      
-      @media (max-width: 768px) and (orientation: landscape) {
-        :root {
-          --header-height: 72px;
-        }
-      }
-      
+      }    
       /* Hero-kuvan ja "Tietoa meistä" -tekstin välin pienentäminen */
       
       #tietoa {
@@ -1242,6 +1237,18 @@ Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
       }
     });
   });
-</script>
+      
+      function updateTopStackHeight() {
+        const header = document.querySelector("header");
+        if (header) {
+          const height = header.offsetHeight;
+          document.documentElement.style.setProperty("--top-stack-height", `${height}px`);
+        }
+      }
+      
+      updateTopStackHeight();
+      window.addEventListener("resize", updateTopStackHeight);
+      window.addEventListener("load", updateTopStackHeight);
+    </script>
   </body>
 </html>
