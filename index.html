@@ -60,7 +60,7 @@
       }
       
       :root {
-        --header-height: 110px;
+        --header-height: 86px;
         --announcement-height: 44px;
       }
       
@@ -278,6 +278,10 @@
         width: 100%;
         height: auto;
         display: block;
+      }
+      
+      body.with-announcement .hero-image img {
+        margin-top: 0;
       }
 
       .section {
@@ -658,6 +662,13 @@
         }
 
       }
+      
+      @media (max-width: 768px) and (orientation: landscape) {
+        :root {
+          --header-height: 72px;
+        }
+      }
+      
       /* Hero-kuvan ja "Tietoa meistä" -tekstin välin pienentäminen */
       
       #tietoa {
