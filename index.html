@@ -84,11 +84,22 @@
         display: flex;
         align-items: center;
         white-space: nowrap;
+        width: max-content;
         gap: 3rem;
         font-size: 0.95rem;
         font-weight: 600;
         letter-spacing: 0.04em;
         text-transform: uppercase;
+        animation: marquee-scroll 22s linear infinite;
+      }
+      
+      @keyframes marquee-scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
       }
       
       .announcement-track span {
