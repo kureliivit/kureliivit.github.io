@@ -58,6 +58,47 @@
         
         pointer-events: none;
       }
+      
+      :root {
+        --header-height: 110px;
+        --announcement-height: 44px;
+      }
+      
+      body.with-announcement {
+        padding-top: calc(var(--header-height) + var(--announcement-height));
+      }
+      
+      .announcement-bar {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: var(--announcement-height);
+        background: #eadcc8;
+        color: #4a2414;
+        overflow: hidden;
+        z-index: 998;
+        display: flex;
+        align-items: center;
+        border-top: 1px solid rgba(74, 36, 20, 0.12);
+        border-bottom: 1px solid rgba(74, 36, 20, 0.18);
+      }
+      
+      .announcement-track {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        gap: 3rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      
+      .announcement-track span {
+        display: inline-block;
+        padding-right: 3rem;
+      }
 
       nav {
         display: flex;
@@ -654,7 +695,7 @@
       
     </style>
   </head>
-  <body>
+  <body class="with-announcement">
     <a href="#esitykset" class="skip-link">Siirry sisältöön</a>
     <header>
   <nav class="container site-nav" aria-label="Päänavigaatio">
@@ -682,6 +723,17 @@
     </ul>
   </nav>
 </header>
+    
+    <div class="announcement-bar">
+      <div class="announcement-track">
+        <span>
+          25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •
+        </span>
+        <span>
+          25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •
+        </span>
+      </div>
+    </div>
 
     <main>
       <section class="hero-image" id="hero">
