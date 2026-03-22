@@ -64,20 +64,12 @@
         --announcement-height: 44px;
       }
       
-      body.with-announcement {
-        padding-top: calc(var(--header-height) + var(--announcement-height));
-      }
-      
       .announcement-bar {
-        position: fixed;
-        top: var(--header-height);
-        left: 0;
         width: 100%;
         height: var(--announcement-height);
         background: #eadcc8;
         color: #4a2414;
         overflow: hidden;
-        z-index: 998;
         display: flex;
         align-items: center;
         border-top: 1px solid rgba(74, 36, 20, 0.12);
@@ -274,14 +266,10 @@
       }
 
       .hero-image img {
-        margin-top: 50px;
+        margin-top: 130px;
         width: 100%;
         height: auto;
         display: block;
-      }
-      
-      body.with-announcement .hero-image img {
-        margin-top: 0;
       }
 
       .section {
@@ -706,7 +694,7 @@
       
     </style>
   </head>
-  <body class="with-announcement">
+  <body>
     <a href="#esitykset" class="skip-link">Siirry sisältöön</a>
     <header>
   <nav class="container site-nav" aria-label="Päänavigaatio">
@@ -733,9 +721,8 @@
       <li><a href="#yhteystiedot" role="menuitem">Yhteystiedot</a></li>
     </ul>
   </nav>
-</header>
-    
-    <div class="announcement-bar">
+      
+      <div class="announcement-bar">
       <div class="announcement-track">
         <span>
           25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •
@@ -745,6 +732,8 @@
         </span>
       </div>
     </div>
+    
+    </header>
 
     <main>
       <section class="hero-image" id="hero">
