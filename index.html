@@ -80,39 +80,29 @@
         border-bottom: 1px solid rgba(74, 36, 20, 0.18);
       }
       
+      .announcement-viewport {
+        width: 100%;
+        overflow: hidden;
+      }
+      
       .announcement-marquee {
         display: flex;
-        width: max-content;
         flex-wrap: nowrap;
         white-space: nowrap;
+        width: max-content;
         will-change: transform;
         transform: translate3d(0, 0, 0);
-        backface-visibility: hidden;
-        animation: marquee-marquee 18s linear infinite;
       }
       
       .announcement-group {
         flex: 0 0 auto;
         display: flex;
         align-items: center;
-      }
-      
-      .announcement-group span {
-        display: inline-block;
         padding-right: 0.5rem;
         font-size: 0.95rem;
         font-weight: 600;
         letter-spacing: 0.04em;
         text-transform: uppercase;
-      }
-      
-      @keyframes marquee-marquee {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-33.333%);
-        }
       }
 
       nav {
@@ -744,15 +734,11 @@
   </nav>
       
       <div class="announcement-bar">
-        <div class="announcement-marquee">
-          <div class="announcement-group">
-            <span>25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •</span>
-          </div>
-          <div class="announcement-group" aria-hidden="true">
-            <span>25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •</span>
-          </div>
-          <div class="announcement-group" aria-hidden="true">
-            <span>25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •</span>
+        <div class="announcement-viewport">
+          <div class="announcement-marquee" id="announcementMarquee">
+            <div class="announcement-group">25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •</div>
+            <div class="announcement-group" aria-hidden="true">25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •</div>
+            <div class="announcement-group" aria-hidden="true">25.3. • IMPROKLUBI RIIHI • BISTRO VILJA, TAMPERE • KLO 19 • TERVETULOA •</div>
           </div>
         </div>
       </div>
@@ -1276,6 +1262,50 @@ Tapahtuman tarkemmat tiedot julkaistaan myöhemmin.
       updateTopStackHeight();
       window.addEventListener("resize", updateTopStackHeight);
       window.addEventListener("load", updateTopStackHeight);
+      
+      function initAnnouncementMarquee() {
+        const marquee = document.getElementById("announcementMarquee");
+        if (!marquee) return;
+        
+        let offset = 0;
+        let speed = 0.6;
+        let groupWidth = 0;
+        let animationFrameId = null;
+        
+        function measure() {
+          const firstGroup = marquee.querySelector(".announcement-group");
+          if (!firstGroup) return;
+          groupWidth = firstGroup.offsetWidth;
+        }
+        
+        function step() {
+          offset -= speed;
+          
+          if (groupWidth > 0 && Math.abs(offset) >= groupWidth) {
+            offset += groupWidth;
+          }
+          
+          marquee.style.transform = `translate3d(${offset}px, 0, 0)`;
+          animationFrameId = window.requestAnimationFrame(step);
+        }
+        
+        function start() {
+          if (animationFrameId) {
+            window.cancelAnimationFrame(animationFrameId);
+          }
+          measure();
+          step();
+        }
+        
+        start();
+        window.addEventListener("resize", () => {
+          offset = 0;
+          measure();
+        });
+      }
+      
+      initAnnouncementMarquee();
+      
     </script>
   </body>
 </html>
