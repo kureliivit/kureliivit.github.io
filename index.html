@@ -18,10 +18,15 @@
       }
 
       body {
-    font-family: "Inter", sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: #f8f9fa; /* tasainen harmaa */
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        
+        background-image: url("https://raw.githubusercontent.com/kureliivit/kureliivit.github.io/refs/heads/main/tiiliseina_desktop.JPG");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
       }
 
       .container {
@@ -287,11 +292,12 @@
 
       .section {
         padding: 60px 0;
-        background: white;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(2px);
       }
 
       .section:nth-child(even) {
-        background: #f8f9fa;
+        background: rgba(248, 249, 250, 0.92);
       }
 
       section {
@@ -666,6 +672,13 @@
       @media (max-width: 768px) and (orientation: portrait) {
         .hero-image::after {
           display: none;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        body {
+          background-image: url("https://raw.githubusercontent.com/kureliivit/kureliivit.github.io/refs/heads/main/tiiliseina_mobiili.JPG");
+          background-attachment: scroll;
         }
       } 
       
