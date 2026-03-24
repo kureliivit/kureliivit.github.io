@@ -285,11 +285,11 @@
 
       .section {
         padding: 60px 0;
-        background: rgba(245, 239, 230, 0.86);
+        background: rgba(245, 239, 230, 0.78);
       }
 
       .section:nth-child(even) {
-        background: rgba(242, 235, 226, 0.86);
+        background: rgba(242, 235, 226, 0.78);
       }
 
       section {
@@ -670,6 +670,10 @@
       @media (max-width: 768px) and (orientation: portrait) {
         .hero-image::after {
           display: none;
+        }
+        
+        .hero-image {
+          margin-bottom: -6px;
         }
       }
 
