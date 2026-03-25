@@ -79,6 +79,10 @@
         --announcement-height: 44px;
         --top-stack-height: 130px;
       }
+
+      body.no-announcement {
+        --top-stack-height: 86px;
+      }
       
       .announcement-bar {
         width: 100%;
@@ -724,7 +728,7 @@
       
     </style>
   </head>
-  <body>
+  <body class="no-announcement">
     <div class="bg-wall"></div>
     
     <a href="#esitykset" class="skip-link">Siirry sisältöön</a>
@@ -754,6 +758,7 @@
     </ul>
   </nav>
       
+      <!--
       <div class="announcement-bar">
         <div class="announcement-viewport">
           <div class="announcement-marquee" id="announcementMarquee">
@@ -763,6 +768,7 @@
           </div>
         </div>
       </div>
+      -->
     
     </header>
 
