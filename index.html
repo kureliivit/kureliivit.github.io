@@ -735,6 +735,20 @@
   padding-bottom: 30px !important; /* jos image-section piilotettu, edellinen section lähemmäs */
 }
       
+    .rotating-logo {
+  animation: logoSpin 60s linear infinite;
+  transform-origin: center center;
+}
+      
+      @keyframes logoSpin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    
     </style>
   </head>
   <body>
@@ -821,6 +835,7 @@
                 src="kureliivit-logo.png"
                 alt="Kureliivit ja jaloimmat reidet logo"
                 role="presentation"
+                class="rotating-logo"
               />
             </aside>
           </div>
