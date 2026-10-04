@@ -455,10 +455,11 @@
       .past-gigs-list li:hover {
         transform: translateX(5px);
       }
-
+      
       .accordion {
         margin: 0 auto;
-        max-width: 100%;
+        width: 100%;
+        max-width: 760px;
       }
 
       .accordion-item {
@@ -1013,10 +1014,10 @@
           -->
           
           <div class="accordion">
-            <div class="accordion-item active">
+            <div class="accordion-item">
               <button
                 class="accordion-header"
-                aria-expanded="true"
+                aria-expanded="false"
                 aria-controls="accordion-2026"
                 id="accordion-header-2026"
               >
@@ -1027,7 +1028,7 @@
                 class="accordion-content"
                 id="accordion-2026"
                 aria-labelledby="accordion-header-2026"
-                aria-hidden="false"
+                aria-hidden="true"
               >
                 <ul>
 
@@ -1373,27 +1374,6 @@
     }
   });
 }
-
-  function handleAccordionOnResize() {
-    const firstAccordion = document.querySelector(".accordion-item");
-    if (firstAccordion) {
-      const header = firstAccordion.querySelector(".accordion-header");
-      const content = firstAccordion.querySelector(".accordion-content");
-
-      if (window.innerWidth <= 768) {
-        firstAccordion.classList.remove("active");
-        if (header) header.setAttribute("aria-expanded", "false");
-        if (content) content.setAttribute("aria-hidden", "true");
-      } else {
-        firstAccordion.classList.add("active");
-        if (header) header.setAttribute("aria-expanded", "true");
-        if (content) content.setAttribute("aria-hidden", "false");
-      }
-    }
-  }
-
-  handleAccordionOnResize();
-  window.addEventListener("resize", handleAccordionOnResize);
 
   document.querySelectorAll(".accordion-header").forEach((header) => {
     header.addEventListener("click", () => {
