@@ -722,36 +722,28 @@
       
       #esitykset {
     padding-top: 0px;
-}
+      }
       
       #menneet-keikat {
     padding-top: 40px;
-}
+      }
       
       /* Piilottaa kaikki kuvat ja koko sektion, jos siinä on hidden-luokka */
       .image-section.hidden {
         display: none !important; /* koko lohko katoaa */
         padding: 0;               /* välit nollaan */
       }
-
-    /* --- Tilapäinen välien pienennys ennen kuin kuvat lisätään --- */
-.section {
-  padding-top: 30px !important;    /* alkuperä 60px */
-  padding-bottom: 30px !important; /* alkuperä 60px */
-}
-
-.image-section.hidden + .section {
-  padding-top: 30px !important; /* jos image-section piilotettu, seuraava section tulee lähemmäs */
-}
-
-.section + .image-section.hidden {
-  padding-bottom: 30px !important; /* jos image-section piilotettu, edellinen section lähemmäs */
-}
       
-    .rotating-logo {
-  animation: logoSpin 60s linear infinite;
-  transform-origin: center center;
-}
+      /* --- Tilapäinen välien pienennys ennen kuin kuvat lisätään --- */
+      .section {
+        padding-top: 30px !important;    /* alkuperä 60px */
+        padding-bottom: 30px !important; /* alkuperä 60px */
+      }
+      
+      .rotating-logo {
+        animation: logoSpin 60s linear infinite;
+        transform-origin: center center;
+      }
       
       @keyframes logoSpin {
         from {
