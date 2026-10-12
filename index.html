@@ -318,6 +318,49 @@
         width: 100%;
         max-width: 550px;
       }
+      
+      /* Tulevien esitysten yhteydessä näytettävä kausimainos */
+      .shows-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 550px);
+        gap: 2rem;
+        margin-top: 3rem;
+        align-items: start;
+      }
+      
+      .shows-layout .shows-grid {
+        margin: 0;
+      }
+      
+      .seasonal-promo {
+        order: -1;
+        width: 100%;
+      }
+      
+      .seasonal-promo[hidden] {
+        display: none;
+      }
+      
+      .seasonal-promo a,
+      .seasonal-promo img {
+        display: block;
+        width: 100%;
+      }
+      
+      .seasonal-promo img {
+        height: auto;
+        border-radius: 15px;
+      }
+      
+      @media (min-width: 769px) {
+        .shows-layout {
+          grid-template-columns: minmax(0, 550px) minmax(0, 550px);
+        }
+        
+        .seasonal-promo {
+          order: 0;
+        }
+      }
 
       .show-card {
         background: white;
