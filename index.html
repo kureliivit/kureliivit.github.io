@@ -1586,6 +1586,15 @@
       
       initAnnouncementMarquee();
       
+      // Piilota keikkakortit niiden oman määräajan jälkeen.
+      document.querySelectorAll(".show-card[data-hide-after]").forEach((card) => {
+        const hideTime = Date.parse(card.dataset.hideAfter);
+
+        if (!Number.isNaN(hideTime) && Date.now() >= hideTime) {
+          card.hidden = true;
+        }
+      });
+      
     </script>
   </body>
 </html>
