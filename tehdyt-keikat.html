@@ -118,6 +118,22 @@
       closeMenu();
     }
   });
+  
+document.querySelectorAll(".accordion-header").forEach((header) => {
+  header.addEventListener("click", () => {
+    const accordionItem = header.parentElement;
+    const content = accordionItem.querySelector(".accordion-content");
+    const isActive = accordionItem.classList.contains("active");
+
+    accordionItem.classList.toggle("active");
+    header.setAttribute("aria-expanded", String(!isActive));
+
+    if (content) {
+      content.setAttribute("aria-hidden", isActive ? "true" : "false");
+    }
+  });
+});
+  
 </script>
 
 </body>
