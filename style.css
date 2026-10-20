@@ -723,3 +723,13 @@
           transform: rotate(360deg);
         }
       }
+
+/* Warhol-rivi footerissa */
+.footer-warhol {
+        display: block;
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        margin: 0 auto 30px;
+}
+
