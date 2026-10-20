@@ -26,6 +26,22 @@
         class="site-logo"
       >
     </a>
+    
+<button
+  class="menu-toggle"
+  aria-expanded="false"
+  aria-controls="nav-menu"
+  aria-label="Avaa navigaatiovalikko"
+>
+  <span class="menu-icon">☰</span>
+</button>
+
+<ul class="nav-links" role="menubar" id="nav-menu">
+  <li><a href="index.html#esitykset" role="menuitem">Ajankohtaista</a></li>
+  <li><a href="#menneet-keikat" role="menuitem">Tehdyt keikat</a></li>
+  <li><a href="index.html#yhteystiedot" role="menuitem">Yhteystiedot</a></li>
+</ul>
+
   </nav>
 </header>
 
@@ -36,6 +52,44 @@
       </div>
     </section>
   </main>
+    
+<script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  const menuIcon = document.querySelector(".menu-icon");
+
+  function closeMenu() {
+    navLinks.classList.remove("active");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Avaa navigaatiovalikko");
+    menuIcon.textContent = "☰";
+  }
+
+  menuToggle.addEventListener("click", () => {
+    const isActive = navLinks.classList.toggle("active");
+
+    menuToggle.setAttribute("aria-expanded", String(isActive));
+    menuToggle.setAttribute(
+      "aria-label",
+      isActive ? "Sulje navigaatiovalikko" : "Avaa navigaatiovalikko"
+    );
+    menuIcon.textContent = isActive ? "✕" : "☰";
+  });
+
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (
+      !navLinks.contains(event.target) &&
+      !menuToggle.contains(event.target)
+    ) {
+      closeMenu();
+    }
+  });
+</script>
+
 </body>
 
 </html>
