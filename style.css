@@ -733,3 +733,46 @@
         margin: 0 auto 30px;
 }
 
+/* Tehdyt keikat -sivun haitarit ja kuva */
+#menneet-keikat > .container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+
+#menneet-keikat .section-title {
+  grid-column: 1 / -1;
+}
+
+.tehdyt-keikat-kuva {
+  width: 100%;
+  max-width: 600px;
+  margin: 10px auto 0;
+}
+
+.tehdyt-keikat-kuva img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 769px) {
+  #menneet-keikat > .container {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 40px;
+    align-items: start;
+  }
+
+  #menneet-keikat .accordion {
+    width: 100%;
+    max-width: none;
+  }
+
+  .tehdyt-keikat-kuva {
+    max-width: none;
+    margin: 0;
+    align-self: start;
+  }
+}
+
+
