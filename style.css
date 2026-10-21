@@ -771,7 +771,7 @@
   .tehdyt-keikat-kuva {
     max-width: none;
     margin: 0;
-    align-self: start;
+    align-self: center;
   }
 }
 
