@@ -733,6 +733,13 @@
   margin: 0 auto 5px;
 }
 
+/* Warhol-rivi pienemmäksi pystynäkymässä */
+@media (max-width: 600px) {
+  .footer-warhol {
+    width: 80%;
+  }
+}
+
 /* Tehdyt keikat -sivun haitarit ja kuva */
 #menneet-keikat > .container {
   display: grid;
