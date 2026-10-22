@@ -803,10 +803,11 @@
 
 /* Vaakanäkymässä teksti vasemmalle ja kuva oikealle */
 @media (min-width: 600px) and (orientation: landscape) {
-  .contact-intro {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: 2rem;
-  }
+        .contact-intro {
+                grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+                gap: 2rem;
+                align-items: end;
+        }
 
   .contact-copy {
     grid-column: 1;
