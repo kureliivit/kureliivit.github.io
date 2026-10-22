@@ -806,18 +806,19 @@
         .contact-intro {
                 grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
                 gap: 2rem;
-                align-items: end;
+                align-items: center;
         }
 
   .contact-copy {
     grid-column: 1;
     grid-row: 1;
   }
-
-  .contact-photo {
-    grid-column: 2;
-    grid-row: 1;
-  }
+        
+        .contact-photo {
+                grid-column: 2;
+                grid-row: 1;
+                transform: translateY(20px);
+        }
 
   .contact-photo img {
     max-height: none;
