@@ -826,4 +826,22 @@
 }
 
 
+/* Tehdyt keikat: tiiviimpi pystynäkymä */
+@media (max-width: 768px) and (orientation: portrait) {
+  #menneet-keikat {
+    padding-top: 15px !important;
+  }
+
+  #menneet-keikat .section-title {
+    margin-bottom: 18px;
+  }
+
+  #menneet-keikat .accordion-item {
+    margin-bottom: 8px;
+  }
+}
+
+
+
+
 
