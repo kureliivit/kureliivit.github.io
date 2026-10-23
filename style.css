@@ -841,6 +841,25 @@
   }
 }
 
+/* Tietoa meistä -osion tiivistys pystynäkymässä */
+@media (max-width: 768px) and (orientation: portrait) {
+  .about-content {
+    gap: 1rem;
+  }
+
+  .about-image {
+    margin-top: 0;
+  }
+
+  #tietoa {
+    padding-bottom: 10px !important;
+  }
+
+  #esitykset {
+    padding-top: 10px !important;
+  }
+}
+
 
 
 
