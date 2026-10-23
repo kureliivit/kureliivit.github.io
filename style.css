@@ -844,7 +844,7 @@
 /* Tietoa meistä -osion tiivistys pystynäkymässä */
 @media (max-width: 768px) and (orientation: portrait) {
   .about-content {
-    gap: 1rem;
+    gap: 0;
   }
 
   .about-image {
