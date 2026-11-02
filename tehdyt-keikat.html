@@ -446,6 +446,15 @@ document.querySelectorAll(".accordion-header").forEach((header) => {
       content.setAttribute("aria-hidden", isActive ? "true" : "false");
     }
   });
+});  
+  
+// Näytä toteutuneet keikat niiden oman määräajan jälkeen.
+document.querySelectorAll("[data-show-after]").forEach((show) => {
+  const showTime = Date.parse(show.dataset.showAfter);
+
+  if (!Number.isNaN(showTime) && Date.now() >= showTime) {
+    show.hidden = false;
+  }
 });
   
 </script>
