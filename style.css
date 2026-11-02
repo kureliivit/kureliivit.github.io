@@ -497,16 +497,21 @@
       .accordion-item.active .accordion-icon {
         transform: rotate(180deg);
       }
+      
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s cubic-bezier(.22,.61,.36,1);
+}
 
-      .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-      }
+.accordion-content ul {
+  min-height: 0;
+  overflow: hidden;
+}
 
-      .accordion-item.active .accordion-content {
-        max-height: none;
-      }
+.accordion-item.active .accordion-content {
+  grid-template-rows: 1fr;
+}
 
       .accordion-content ul {
         list-style: none;
