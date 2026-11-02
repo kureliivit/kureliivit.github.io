@@ -252,17 +252,18 @@
         display: block;
       }
 
-/* Hero-kuvan hillitty koko tietokonenäkymässä */
+/* Hero-kuvan koko tietokonenäkymässä */
 @media (min-width: 1024px) {
-        .hero-image {
-                background-color: #000;
-        }
-        
-        .hero-image img {
-                max-width: 1100px;
-                height: auto;
-                margin: 0 auto;
-        }
+  .hero-image {
+    background-color: #000;
+  }
+
+  .hero-image img {
+    width: auto;
+    max-width: 100%;
+    max-height: calc(100vh - 200px);
+    margin: 0 auto;
+  }
 }
 
 .section {
