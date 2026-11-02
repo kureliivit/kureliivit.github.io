@@ -511,6 +511,7 @@
 
 .accordion-item.active .accordion-content {
   grid-template-rows: 1fr;
+        transition-duration: 0.55s;
 }
 
       .accordion-content ul {
