@@ -432,11 +432,18 @@
         border-radius: 10px;
       }
             
-.private-event-image {
-  height: 180px;
+
+/* Yksityiskeikkojen kompaktit kortit */
+.private-show-card {
+  padding: 1.25rem 1.5rem;
+}
+
+.private-show-card .private-event-image {
+  display: block;
+  height: 140px;
   object-fit: cover;
   object-position: center;
-  margin-top: 1rem;
+  margin: 0.5rem 0 0;
 }
       
       .accordion {
