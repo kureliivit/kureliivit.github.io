@@ -440,8 +440,8 @@
 
 .private-show-card .private-event-image {
   display: block;
-  height: 140px;
-  object-fit: contain;
+  height: 165px;
+  object-fit: cover;
   object-position: center;
   margin: 0.5rem 0 0;
 }
