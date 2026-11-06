@@ -431,12 +431,13 @@
         margin: 1rem auto;
         border-radius: 10px;
       }
-      
-      .private-event-image {
-        height: auto;
-        object-fit: contain;
-        margin-top: 2rem;
-      }
+            
+.private-event-image {
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  margin-top: 1rem;
+}
       
       .accordion {
         width: 100%;
