@@ -41,15 +41,29 @@
       <li><a href="tehdyt-keikat.html" role="menuitem">Tehdyt keikat</a></li>
       <li><a href="#yhteystiedot" role="menuitem">Ota yhteyttä</a></li>
     </ul>
-  </nav>
-      
-      
+  </nav>      
+
 <!-- Markiisin tuleva ajastettu ilmoitusvarasto -->
 <template id="announcementMessages">
 
-  <span class="announcement-message">
+  <span
+    class="announcement-message"
+    data-hide-after="2026-11-22T00:00:00+02:00"
+  >
     TULOSSA • 21.11. VAHANKO KIVAT IMPROILTAMAT – VAHALANDEN KULTTUURITALO, NOKIA •
   </span>
+
+  <!--
+  Uuden ilmoituksen malli:
+
+  <span
+    class="announcement-message"
+    data-show-after="2027-01-01T00:00:00+02:00"
+    data-hide-after="2027-01-29T00:00:00+02:00"
+  >
+    ILMOITUKSEN TEKSTI •
+  </span>
+  -->
 
 </template>
       
