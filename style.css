@@ -888,6 +888,25 @@
   }
 }
 
+/* Keikkakorttien työpöytänäkymän hienosäätö */
+@media (min-width: 1024px) {
+
+  /* Tavalliset keikkakortit kompaktimmiksi */
+  .shows-grid .show-card:not(.private-show-card) {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  /* Yksityiskeikkojen kuvitus kokonaan näkyviin */
+  .private-show-card .private-event-image {
+    height: 165px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+}
+
+
 
 
 
