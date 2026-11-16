@@ -897,6 +897,7 @@
     object-fit: contain;
     object-position: center;
     margin: -0.25rem 0 -2.5rem;
+    transform: translateY(-25px);
   }
 
 }
