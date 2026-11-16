@@ -891,14 +891,16 @@
 /* Keikkakorttien työpöytänäkymän hienosäätö */
 @media (min-width: 1024px) {
 
-  /* Yksityiskeikkojen kuvitus kokonaan näkyviin */
+  /* Yksityiskeikkojen kuvitus suuremmaksi */
   .private-show-card .private-event-image {
-    height: 165px;
+    height: 220px;
     object-fit: contain;
     object-position: center;
+    margin: -0.25rem 0 -2.5rem;
   }
 
 }
+
 
 
 
