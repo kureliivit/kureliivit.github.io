@@ -912,18 +912,22 @@
   opacity: 0.7;
 
   background-image:
-    radial-gradient(2px 2px at 30px 50px, white 98%, transparent),
-    radial-gradient(3px 3px at 110px 140px, white 98%, transparent),
-    radial-gradient(2px 2px at 200px 80px, white 98%, transparent),
-    radial-gradient(4px 4px at 280px 230px, white 98%, transparent);
+    radial-gradient(1px 1px at 31px 57px, white 98%, transparent),
+    radial-gradient(2px 2px at 149px 113px, white 98%, transparent),
+    radial-gradient(2.5px 2.5px at 79px 231px, white 98%, transparent),
+    radial-gradient(3px 3px at 294px 174px, white 98%, transparent),
+    radial-gradient(1.5px 1.5px at 187px 313px, white 98%, transparent),
+    radial-gradient(4px 4px at 421px 369px, white 98%, transparent);
 
   background-size:
-    180px 180px,
-    260px 260px,
-    340px 340px,
-    420px 420px;
+    197px 197px,
+    283px 283px,
+    367px 367px,
+    439px 439px,
+    503px 503px,
+    607px 607px;
 
-  animation: kureliivit-snow 24s linear infinite;
+  animation: kureliivit-snow 32s linear infinite;
 }
 
 @keyframes kureliivit-snow {
@@ -932,15 +936,19 @@
       0 0,
       0 0,
       0 0,
+      0 0,
+      0 0,
       0 0;
   }
 
   to {
     background-position:
-      0 540px,
-      0 520px,
-      0 340px,
-      0 420px;
+      0 394px,
+      0 566px,
+      0 367px,
+      0 439px,
+      0 503px,
+      0 607px;
   }
 }
 
