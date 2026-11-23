@@ -902,6 +902,55 @@
 
 }
 
+/* Kureliivien talvinen lumisade */
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.7;
+
+  background-image:
+    radial-gradient(2px 2px at 30px 50px, white 98%, transparent),
+    radial-gradient(3px 3px at 110px 140px, white 98%, transparent),
+    radial-gradient(2px 2px at 200px 80px, white 98%, transparent),
+    radial-gradient(4px 4px at 280px 230px, white 98%, transparent);
+
+  background-size:
+    180px 180px,
+    260px 260px,
+    340px 340px,
+    420px 420px;
+
+  animation: kureliivit-snow 24s linear infinite;
+}
+
+@keyframes kureliivit-snow {
+  from {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      0 540px,
+      0 520px,
+      0 340px,
+      0 420px;
+  }
+}
+
+/* Kunnioitetaan vähennetyn liikkeen asetusta */
+@media (prefers-reduced-motion: reduce) {
+  .hero-image::after {
+    animation: none;
+  }
+}
+
 
 
 
